@@ -1,0 +1,6 @@
+*.lock
+/config/*.ini
+/nbproject
+/report
+/tmp
+/vendor

@@ -1,0 +1,22 @@
+{
+    "export": "doctrine2-annotation",
+    "zip": false,
+    "dir": "src/Model",
+    "params": {
+        "addGeneratorInfoAsComment": false,
+        "backupExistingFile": false,
+        "skipPluralNameChecking": false,
+        "enhanceManyToManyDetection": true,
+        "bundleNamespace": "XframeCMS",
+        "entityNamespace": "Model",
+        "repositoryNamespace": "",
+        "useAnnotationPrefix": "ORM\\",
+        "skipGetterAndSetter": true,
+        "extendsClass": "XframeCMS\\AbstractModel",
+        "propertyTypehint": true,
+        "useAutomaticRepository": true,
+        "indentation": 4,
+        "filename": "%entity%.%extension%",
+        "quoteIdentifier": false
+    }
+}
