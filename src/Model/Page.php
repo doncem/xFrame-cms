@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * XframeCMS\Model\Page
  *
  * @ORM\Entity(repositoryClass="PageRepository")
- * @ORM\Table(name="_page", indexes={@ORM\Index(name="page_author_id", columns={"author_id"})}, uniqueConstraints={@ORM\UniqueConstraint(name="url_param_UNIQUE", columns={"`view`"})})
+ * @ORM\Table(name="_page", indexes={@ORM\Index(name="page_author_id", columns={"author_id"})}, uniqueConstraints={@ORM\UniqueConstraint(name="url_param_UNIQUE", columns={"url_param"})})
  */
 class Page extends XframeCMS\AbstractModel
 {
@@ -21,9 +21,9 @@ class Page extends XframeCMS\AbstractModel
     protected $id;
 
     /**
-     * @ORM\Column(name="`view`", type="string", length=100)
+     * @ORM\Column(type="string", length=100)
      */
-    protected $view;
+    protected $url_param;
 
     /**
      * @ORM\Column(type="integer", options={"unsigned":true})
@@ -51,6 +51,11 @@ class Page extends XframeCMS\AbstractModel
     protected $controller;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    protected $point;
+
+    /**
      * @ORM\OneToMany(targetEntity="User", mappedBy="page")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable=false)
      */
@@ -62,6 +67,12 @@ class Page extends XframeCMS\AbstractModel
      */
     protected $menu;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="PagePointLog", inversedBy="pages")
+     * @ORM\JoinColumn(name="id", referencedColumnName="page_id", nullable=false)
+     */
+    protected $pagePointLog;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -69,6 +80,6 @@ class Page extends XframeCMS\AbstractModel
 
     public function __sleep()
     {
-        return array('id', 'view', 'author_id', 'created', 'updated', 'is_published', 'controller');
+        return array('id', 'url_param', 'author_id', 'created', 'updated', 'is_published', 'controller', 'point');
     }
 }

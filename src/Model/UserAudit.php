@@ -31,6 +31,11 @@ class UserAudit extends XframeCMS\AbstractModel
     protected $action_id;
 
     /**
+     * @ORM\Column(name="`data`", type="text", nullable=true)
+     */
+    protected $data;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     protected $created;
@@ -46,20 +51,13 @@ class UserAudit extends XframeCMS\AbstractModel
      */
     protected $users;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Action", mappedBy="userAudit")
-     * @ORM\JoinColumn(name="action_id", referencedColumnName="id", nullable=false)
-     */
-    protected $actions;
-
     public function __construct()
     {
         $this->users = new ArrayCollection();
-        $this->actions = new ArrayCollection();
     }
 
     public function __sleep()
     {
-        return array('id', 'audited_user_id', 'action_id', 'created', 'user_id');
+        return array('id', 'audited_user_id', 'action_id', 'data', 'created', 'user_id');
     }
 }

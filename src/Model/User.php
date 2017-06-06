@@ -67,6 +67,11 @@ class User extends XframeCMS\AbstractModel
     protected $is_public;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    protected $points;
+
+    /**
      * @ORM\ManyToOne(targetEntity="UserAudit", inversedBy="users")
      * @ORM\JoinColumn(name="id", referencedColumnName="audited_user_id", nullable=false)
      */
@@ -84,12 +89,30 @@ class User extends XframeCMS\AbstractModel
      */
     protected $page;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="UserPointLog", inversedBy="users")
+     * @ORM\JoinColumn(name="id", referencedColumnName="user_id", nullable=false)
+     */
+    protected $userPointLog;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="PagePointLog", inversedBy="users")
+     * @ORM\JoinColumn(name="id", referencedColumnName="user_id", nullable=false)
+     */
+    protected $pagePointLog;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBadge", inversedBy="users")
+     * @ORM\JoinColumn(name="id", referencedColumnName="user_id", nullable=false)
+     */
+    protected $userBadge;
+
     public function __construct()
     {
     }
 
     public function __sleep()
     {
-        return array('id', 'email', 'password', 'registered', 'last_session', 'session_ttl', 'is_admin', 'is_active', 'is_locked', 'is_public');
+        return array('id', 'email', 'password', 'registered', 'last_session', 'session_ttl', 'is_admin', 'is_active', 'is_locked', 'is_public', 'points');
     }
 }

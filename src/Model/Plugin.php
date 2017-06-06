@@ -34,12 +34,17 @@ class Plugin extends XframeCMS\AbstractModel
      */
     protected $is_enabled;
 
+    /**
+     * @ORM\Column(name="`group`", type="string", length=20)
+     */
+    protected $group;
+
     public function __construct()
     {
     }
 
     public function __sleep()
     {
-        return array('id', 'name', 'class', 'is_enabled');
+        return array('id', 'name', 'class', 'is_enabled', 'group');
     }
 }
