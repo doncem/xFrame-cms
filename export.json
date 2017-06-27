@@ -12,7 +12,7 @@
         "repositoryNamespace": "",
         "useAnnotationPrefix": "ORM\\",
         "skipGetterAndSetter": true,
-        "extendsClass": "XframeCMS\\AbstractModel",
+        "extendsClass": "\\XframeCMS\\AbstractModel",
         "propertyTypehint": true,
         "useAutomaticRepository": true,
         "indentation": 4,

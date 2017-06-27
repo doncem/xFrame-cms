@@ -1,6 +1,5 @@
 *.bak
 *.lock
-/config/*.ini
 /nbproject
 /report
 /tmp
