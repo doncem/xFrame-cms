@@ -1,5 +1,6 @@
 *.bak
 *.lock
+/config/live.ini
 /nbproject
 /report
 /tmp

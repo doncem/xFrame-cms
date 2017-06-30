@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+
+$migration = require 'vendor' . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'migration-cli';
+
+use Doctrine\Common\Annotations\AnnotationRegistry;
+
+AnnotationRegistry::registerFile($root . 'src' . DIRECTORY_SEPARATOR . 'AbstractModel.php');
+
+$migration->run();

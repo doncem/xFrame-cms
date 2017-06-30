@@ -1,0 +1,4 @@
+name: xFrame CMS Doctrine Migrations
+migrations_namespace: Migration
+table_name: _migration_version
+migrations_directory: doctrine-migration

@@ -25,8 +25,9 @@
     "require": {
         "php": "^7",
         "minime/annotations": "dev-type-upgrade as 3.0.x-dev",
-        "linusnorton/xframe": "~1.0",
+        "linusnorton/xframe": "~1.2",
         "mobiledetect/mobiledetectlib": "~2.8",
+        "doctrine/migrations": "~v1.5",
         "doctrine/orm": "~v2.5"
     },
     "require-dev": {

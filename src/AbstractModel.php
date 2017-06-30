@@ -6,6 +6,8 @@ use JsonSerializable;
 
 /**
  * Converting parameters to array.
+ *
+ * @MappedSuperclass
  */
 abstract class AbstractModel implements JsonSerializable
 {
