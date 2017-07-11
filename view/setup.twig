@@ -1,0 +1,46 @@
+{% extends "_layout/default.twig" %}
+
+{% block meta_description %}{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block contents %}
+    <h1 class="ui center aligned icon header">
+        <i class="settings icon"></i>
+        <div class="content">SETUP</div>
+    </h1>
+    <div class="ui grid container">
+        <div class="five wide column">
+            <div class="ui vertical steps">
+                <div class="completed step">
+                    <i class="truck icon"></i>
+                    <div class="content">
+                        <div class="title">Shipping</div>
+                        <div class="description">Choose your shipping options</div>
+                    </div>
+                </div>
+                <div class="completed step">
+                    <i class="credit card icon"></i>
+                    <div class="content">
+                        <div class="title">Billing</div>
+                        <div class="description">Enter billing information</div>
+                    </div>
+                </div>
+                <div class="active step">
+                    <i class="info icon"></i>
+                    <div class="content">
+                        <div class="title">Confirm Order</div>
+                        <div class="description">Verify order details</div>
+                    </div>
+              </div>
+            </div>
+        </div>
+        <div class="eleven wide column">
+            <div class="ui raised padded text segment">
+                <h2 class="ui header">WIP</h2>
+                <p>woot?</p>
+            </div>
+        </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

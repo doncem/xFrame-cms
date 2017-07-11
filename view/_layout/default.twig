@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="description" content="{% block meta_description %}{% endblock %}"/>
+        <title>{% block title %}{% endblock %} - xFrame CMS</title>
+        <link rel="stylesheet" href="/css/default.min.css?v={% if isLive %}{{ "now" | date("Ymd") }}{% else %}{{ "now" | date("YmdHis") }}{% endif %}" />
+    </head>
+    <body>
+        {% block contents %}{% endblock %}
+
+        {% block footer %}{% endblock %}
+
+{#        {% if isMobile %}
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+        {% else %}
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        {% endif %}
+        <script type="text/javascript" src="/js/semantic.min.js"></script>
+        <script type="text/javascript" src="/js/main.js?v={% if isLive %}{{ "now" | date("Ymd") }}{% else %}{{ "now" | date("YmdHis") }}{% endif %}"></script>#}
+    </body>
+</html>
+{#
+------------ USAGE --------------
+{% extends "_layout/default.twig" %}
+
+{% block meta_description %}{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block contents %}{% endblock %}
+
+{% block footer %}{% endblock %}
+------------- END ---------------
+#}

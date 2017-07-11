@@ -1,7 +1,10 @@
 *.bak
 *.lock
+*-lock*
 /config/live.ini
 /nbproject
+/node_modules
 /report
 /tmp
 /vendor
+/www/css/*.min.css
