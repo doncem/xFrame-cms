@@ -22,7 +22,7 @@ function getSetupStatus(Registry $registry)
 $system = new System($root, $config);
 
 $system->boot();
-$system->registry->set('isSet', getSetupStatus($system->registry));
+$system->registry->isSet = getSetupStatus($system->registry);
 
 $loader->addPsr4($system->registry->request->NAMESPACE_PREFIX, $root . 'src');
 

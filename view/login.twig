@@ -1,0 +1,21 @@
+{% extends "_layout/default.twig" %}
+
+{% block meta_description %}{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block contents %}
+    <h1 class="ui center aligned icon header">
+        <i class="privacy icon"></i>
+        <div class="content">{{ type | upper }}</div>
+    </h1>
+    <div class="ui centered grid">
+        <div class="six wide column">
+            <div class="ui padded raised tertiary segment">
+                {% include '_module/form/login-register.twig' with { 'type': type } only %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

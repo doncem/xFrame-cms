@@ -8,7 +8,7 @@ final class SetupController extends Controller
 {
     /**
      * @Request setup
-     * @Parameter -> ["status", "Xframe\\Validation\\Regex('/\\b/i')", false, "XframeCMS\\Config\\Setup::NONE"]
+     * @Prefilter \XframeCMS\Prefilter\AclPrefilter
      */
     public function setup()
     {
