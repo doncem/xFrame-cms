@@ -7,8 +7,7 @@ use Xframe\Request\Controller;
 class AbstractController extends Controller
 {
     const WHITELISTED_RESOURCES = [
-        'login',
-        'register'
+        'setup'
     ];
 
     protected function init()

@@ -1,0 +1,22 @@
+{% extends "_layout/default.twig" %}
+
+{% block meta_description %}{% endblock %}
+
+{% block title %}Error{% endblock %}
+
+{% block contents %}
+    <h1 class="ui center aligned icon header">
+        <i class="warning icon"></i>
+        <div class="content">Error</div>
+    </h1>
+    <div class="ui centered grid">
+        <div class="{% if errorStack %}ten{% else %}six{% endif %} wide column">
+            <div class="ui negative message transition auto-overflow-x">
+                <div class="header">{{ errorMessage }}</div>
+                <pre>{{ errorStack }}</pre>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
