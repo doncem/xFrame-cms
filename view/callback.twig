@@ -1,0 +1,24 @@
+{% extends "_layout/default.twig" %}
+
+{% block meta_description %}{% endblock %}
+
+{% block title %}Auth Error{% endblock %}
+
+{% block contents %}
+    <h1 class="ui center aligned icon header">
+        <i class="ban icon"></i>
+        <div class="content">Auth Error</div>
+    </h1>
+    <div class="ui centered grid">
+        <div class="six wide column">
+            <div class="ui padded raised tertiary segment">
+                <h2>{{ error }}</h2>
+                <span>{{ description }}</span>
+                <div class="ui clearing hidden divider"></div>
+                <a class="ui button primary" href="/">Back to index</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

@@ -1,6 +1,7 @@
 *.bak
 *.lock
 *-lock*
+.env
 /config/live.ini
 /nbproject
 /node_modules

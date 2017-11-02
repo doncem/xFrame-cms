@@ -2,6 +2,7 @@
 
 namespace XframeCMS\Controller;
 
+use Auth0\SDK\Exception\ApiException;
 use XframeCMS\AbstractController;
 
 final class LoginController extends AbstractController
@@ -26,5 +27,24 @@ final class LoginController extends AbstractController
     public function register()
     {
         $this->setView();
+    }
+
+    /**
+     * @Request callback
+     */
+    public function callback()
+    {
+        \setcookie('auth0state', $this->request->state);
+
+        if (isset($this->request->error)) {
+            $this->view->error = $this->request->error;
+            $this->view->description = $this->request->error_description;
+        } elseif (isset($this->request->code)) {
+            \setcookie('auth0code', $this->request->code);
+
+            $this->redirect('/');
+        } else {
+            throw new ApiException("Auth0 API error");
+        }
     }
 }

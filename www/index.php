@@ -3,7 +3,16 @@
 $root = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR;
 $loader = require $root . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
-$config = \filter_input(INPUT_SERVER, 'CONFIG') ?: 'live';
+// load .env variables to system
+
+use Dotenv\Dotenv;
+
+$env = new Dotenv($root);
+$env->load();
+
+$config = \getenv('CONFIG') ?: 'live';
+
+// init app
 
 use Xframe\Core\System;
 use Xframe\Exception\Logger;
