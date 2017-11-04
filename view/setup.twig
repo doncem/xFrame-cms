@@ -2,7 +2,7 @@
 
 {% block meta_description %}{% endblock %}
 
-{% block title %}{% endblock %}
+{% block title %}Setup{% endblock %}
 
 {% block contents %}
     <h1 class="ui center aligned icon header">
@@ -12,21 +12,21 @@
     <div class="ui grid container">
         <div class="five wide column">
             <div class="ui vertical steps">
-                <div class="completed step">
+                <div class="active step">
                     <i class="truck icon"></i>
                     <div class="content">
-                        <div class="title">Shipping</div>
-                        <div class="description">Choose your shipping options</div>
+                        <div class="title">Database</div>
+                        <div class="description">Connect to database</div>
                     </div>
                 </div>
-                <div class="completed step">
+                <div class="step">
                     <i class="credit card icon"></i>
                     <div class="content">
                         <div class="title">Billing</div>
                         <div class="description">Enter billing information</div>
                     </div>
                 </div>
-                <div class="active step">
+                <div class="step">
                     <i class="info icon"></i>
                     <div class="content">
                         <div class="title">Confirm Order</div>
@@ -37,8 +37,8 @@
         </div>
         <div class="eleven wide column">
             <div class="ui raised padded text segment">
-                <h2 class="ui header">WIP</h2>
-                <p>woot?</p>
+                <h2 class="ui header">Database</h2>
+                <div>{% include '_module/form/setup-db.twig' with { 'db': registry.database } only %}</div>
             </div>
         </div>
     </div>

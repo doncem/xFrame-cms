@@ -52,6 +52,7 @@ var formFieldRules = {
 };
 
 $(document).ready(function() {
+  // forms
 
   $('.ui.form[name="login"]').form({
     on: 'blur',
@@ -82,6 +83,51 @@ $(document).ready(function() {
         ]
       },
       terms: formFieldRules.terms()
+    }
+  });
+
+  $('.ui.form[name="setup-db"]').form({
+    on: 'blur',
+    inline: true,
+    fields: {
+      password: formFieldRules.password('db-password')
+    }
+  });
+
+  // ajax
+
+  $.fn.api.settings.api = {
+    'save setup': '/setup-save/{step}',
+    'verify setup': '/setup-verify/{step}'
+  };
+
+  $.fn.checkSuccess = function(response, field, clazz, text) {
+    if (response[field]) {
+      this.text('OK').delay(2000).queue(function(next) {
+        $(this).text(text);
+        next();
+      });
+    } else {
+      this.text('Fail').addClass('red').removeClass(clazz).delay(2000).queue(function(next) {
+        $(this).removeClass('red').addClass(clazz).text(text);
+        next();
+      });
+    }
+  };
+
+  $('.ui.form[name="setup-db"] .verify').api({
+    method : 'POST',
+    serializeForm: true,
+    onSuccess: function(response) {
+      $(this).checkSuccess(response, 'verified', 'green', 'Verify')
+    }
+  });
+
+  $('.ui.form[name="setup-db"] .save').api({
+    method : 'POST',
+    serializeForm: true,
+    onSuccess: function(response) {
+      $(this).checkSuccess(response, 'success', 'primary', 'Save')
     }
   });
 });

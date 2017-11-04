@@ -14,24 +14,27 @@ $config = \getenv('CONFIG') ?: 'live';
 
 // init app
 
+use Xframe\Container;
 use Xframe\Core\System;
 use Xframe\Exception\Logger;
 use Xframe\Registry;
 use Xframe\Request\Request;
 
-function getSetupStatus(Registry $registry)
+function findSetupStatus(Registry $registry)
 {
     if (null === $registry->setup) {
-        return false;
-    } else {
-        return Setup::DONE === $registry->setup->status;
+        $registry->setup = new Container();
+        $registry->setup->IS_SET = false;
+    } elseif (null === $registry->setup->IS_SET) {
+        $registry->setup->IS_SET = false;
     }
 }
 
 $system = new System($root, $config);
 
 $system->boot();
-$system->registry->isSet = getSetupStatus($system->registry);
+
+findSetupStatus($system->registry);
 
 // add PSR4 prefix if present
 
