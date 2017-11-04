@@ -2,7 +2,8 @@
 *.lock
 *-lock*
 .env
-/config/live.ini
+/config/*
+!/config/*.example
 /nbproject
 /node_modules
 /report
