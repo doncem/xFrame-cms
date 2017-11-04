@@ -1,17 +1,17 @@
 <?php
 
-namespace XframeCMS\Model;
+namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * XframeCMS\Model\UserPointLog
+ * XframeCMS\Model\Db\UserPointLog
  *
  * @ORM\Entity(repositoryClass="UserPointLogRepository")
  * @ORM\Table(name="_user_point_log", indexes={@ORM\Index(name="user_point", columns={"point_id"}), @ORM\Index(name="user_point_user", columns={"user_id"})})
  */
-class UserPointLog extends \XframeCMS\AbstractModel
+class UserPointLog extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Id

@@ -1,17 +1,17 @@
 <?php
 
-namespace XframeCMS\Model;
+namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * XframeCMS\Model\UserBadge
+ * XframeCMS\Model\Db\UserBadge
  *
  * @ORM\Entity(repositoryClass="UserBadgeRepository")
  * @ORM\Table(name="_user_badge", indexes={@ORM\Index(name="user_badge_user", columns={"user_id"}), @ORM\Index(name="user_badge", columns={"badge_id"})})
  */
-class UserBadge extends \XframeCMS\AbstractModel
+class UserBadge extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Id

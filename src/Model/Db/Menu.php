@@ -1,17 +1,17 @@
 <?php
 
-namespace XframeCMS\Model;
+namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * XframeCMS\Model\Menu
+ * XframeCMS\Model\Db\Menu
  *
  * @ORM\Entity(repositoryClass="MenuRepository")
  * @ORM\Table(name="_menu", indexes={@ORM\Index(name="menu_page_id", columns={"page_id"}), @ORM\Index(name="menu_parent_id", columns={"parent_id"})})
  */
-class Menu extends \XframeCMS\AbstractModel
+class Menu extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Id

@@ -1,17 +1,17 @@
 <?php
 
-namespace XframeCMS\Model;
+namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * XframeCMS\Model\Page
+ * XframeCMS\Model\Db\Page
  *
  * @ORM\Entity(repositoryClass="PageRepository")
  * @ORM\Table(name="_page", indexes={@ORM\Index(name="page_author_id", columns={"author_id"})}, uniqueConstraints={@ORM\UniqueConstraint(name="url_param_UNIQUE", columns={"url_param"})})
  */
-class Page extends \XframeCMS\AbstractModel
+class Page extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Id

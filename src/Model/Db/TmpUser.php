@@ -1,16 +1,16 @@
 <?php
 
-namespace XframeCMS\Model;
+namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * XframeCMS\Model\TmpUser
+ * XframeCMS\Model\Db\TmpUser
  *
  * @ORM\Entity(repositoryClass="TmpUserRepository")
  * @ORM\Table(name="tmp_user", uniqueConstraints={@ORM\UniqueConstraint(name="tmp_email", columns={"email"})})
  */
-class TmpUser extends \XframeCMS\AbstractModel
+class TmpUser extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Column(type="string", length=100)

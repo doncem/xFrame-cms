@@ -1,17 +1,17 @@
 <?php
 
-namespace XframeCMS\Model;
+namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * XframeCMS\Model\UserAudit
+ * XframeCMS\Model\Db\UserAudit
  *
  * @ORM\Entity(repositoryClass="UserAuditRepository")
  * @ORM\Table(name="_user_audit", indexes={@ORM\Index(name="user_audit_action", columns={"action_id"}), @ORM\Index(name="user_audit_user", columns={"audited_user_id"})})
  */
-class UserAudit extends \XframeCMS\AbstractModel
+class UserAudit extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Id

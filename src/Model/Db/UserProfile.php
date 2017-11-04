@@ -1,17 +1,17 @@
 <?php
 
-namespace XframeCMS\Model;
+namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * XframeCMS\Model\UserProfile
+ * XframeCMS\Model\Db\UserProfile
  *
  * @ORM\Entity(repositoryClass="UserProfileRepository")
  * @ORM\Table(name="_user_profile", uniqueConstraints={@ORM\UniqueConstraint(name="user_profile_user_id", columns={"user_id"})})
  */
-class UserProfile extends \XframeCMS\AbstractModel
+class UserProfile extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Column(type="integer", options={"unsigned":true})
