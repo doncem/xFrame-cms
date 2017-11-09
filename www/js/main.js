@@ -52,7 +52,24 @@ var formFieldRules = {
 };
 
 $(document).ready(function() {
+  // checkboxes
+
+  $('.ui.checkbox').checkbox();
+
+  // setup container
+
+  var nextIncompleteStep = function() {
+    $('#setup-container .step:not(.completed):first').addClass('active').each(function() {
+      var elem = $('.ui.form[name="' + $(this).attr('id') + '"]');
+      elem.parent('.hidden').show('slow');
+      elem.closest('.segment').removeClass('loading');
+    });
+  }
+  nextIncompleteStep();
+
   // forms
+
+  $('.ui.form.disabled').removeClass('disabled').parent('.segment').addClass('disabled');
 
   $('.ui.form[name="login"]').form({
     on: 'blur',
@@ -113,9 +130,11 @@ $(document).ready(function() {
         next();
       });
     }
+
+    return response[field];
   };
 
-  $('.ui.form[name="setup-db"] .verify').api({
+  $('.ui.form[name*="setup-"] .verify').api({
     method : 'POST',
     serializeForm: true,
     onSuccess: function(response) {
@@ -123,11 +142,21 @@ $(document).ready(function() {
     }
   });
 
-  $('.ui.form[name="setup-db"] .save').api({
+  $('.ui.form[name*="setup-"] .save').api({
     method : 'POST',
     serializeForm: true,
     onSuccess: function(response) {
-      $(this).checkSuccess(response, 'success', 'primary', 'Save')
+      var isSuccess = $(this).checkSuccess(response, 'success', 'primary', 'Save')
+
+      if (isSuccess) {
+        var form = $(this).closest('form');
+        $('#' + form.attr('name')).addClass('completed').removeClass('active');
+        $(this).closest('.segment').addClass('loading')
+        $('#' + form.attr('name') + '-check').children('.label').removeClass('red').addClass('green').children('.icon').removeClass('minus square outline').addClass('checkmark box');
+        form.parent('.hidden').hide("fast", function() {
+          nextIncompleteStep();
+        });
+      }
     }
   });
 });

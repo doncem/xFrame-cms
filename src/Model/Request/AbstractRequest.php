@@ -11,6 +11,8 @@ abstract class AbstractRequest extends AbstractModel
 
     abstract public function isValid();
 
+    abstract public function isConfigValid(array $config);
+
     abstract public function process(Registry $registry);
 
     protected function __construct()
@@ -27,12 +29,18 @@ abstract class AbstractRequest extends AbstractModel
             $contents .= '[' . $section . ']' . PHP_EOL;
 
             foreach ($config as $key => $value) {
-                $contents .= $key . '=' . $value . PHP_EOL;
+                if ($value instanceof bool || 'IS_' === \mb_substr($key, 0, 3)) {
+                    $v = true === (bool)$value ? 'true' : 'false';
+                } else {
+                    $v = $value;
+                }
+
+                $contents .= $key . '=' . $v . PHP_EOL;
             }
 
             $contents .= PHP_EOL;
         }
 
-        \file_put_contents($file, $contents);
+        return \file_put_contents($file, $contents);
     }
 }

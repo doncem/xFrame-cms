@@ -1,0 +1,35 @@
+<form class="ui fluid form" name="setup-setup" method="POST" action="#save/setup">
+    <div class="inline field" id="setup-request-check">
+        <div class="ui {% if section.IS_SET_REQUEST %}green{% else %}red{% endif %} big label">
+            <i class="{% if section.IS_SET_REQUEST %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Request
+        </div>
+    </div>
+    <div class="inline field" id="setup-database-check">
+        <div class="ui {% if section.IS_SET_DATABASE %}green{% else %}red{% endif %} big label">
+            <i class="{% if section.IS_SET_DATABASE %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Database
+        </div>
+    </div>
+    <div class="inline field" id="setup-doctrine2-check">
+        <div class="ui {% if section.IS_SET_DOCTRINE2 %}green{% else %}red{% endif %} big label">
+            <i class="{% if section.IS_SET_DOCTRINE2 %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Doctrine2
+        </div>
+    </div>
+    <div class="inline field" id="setup-twig-check">
+        <div class="ui {% if section.IS_SET_TWIG %}green{% else %}red{% endif %} big label">
+            <i class="{% if section.IS_SET_TWIG %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Twig
+        </div>
+    </div>
+    <div class="inline field" id="setup-cache-check">
+        <div class="ui {% if section.IS_SET_CACHE %}green{% else %}red{% endif %} big label">
+            <i class="{% if section.IS_SET_CACHE %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Cache
+        </div>
+    </div>
+    <div class="inline field" id="setup-plugin-check">
+        <div class="ui {% if section.IS_SET_PLUGIN %}green{% else %}red{% endif %} big label">
+            <i class="{% if section.IS_SET_PLUGIN %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Plugin
+        </div>
+    </div>
+    <div class="ui green button verify" data-action="verify setup" data-step="setup">Verify</div>
+    <div class="ui primary button save" data-action="save setup" data-step="setup">Save</div>
+    <div class="ui error message"></div>
+</form>

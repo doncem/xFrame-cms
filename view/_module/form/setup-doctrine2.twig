@@ -1,0 +1,11 @@
+<form class="ui fluid form disabled" name="setup-doctrine2" method="POST" action="#save/doctrine2">
+    <div class="inline field disabled">
+        <div class="ui toggle checkbox">
+            <input type="checkbox" class="hidden" name="doctrine-proxies"{% if section.AUTO_REBUILD_PROXIES %} checked{% endif %} />
+            <label>Auto Rebuild Proxies</label>
+        </div>
+    </div>
+    <div class="ui green button verify disabled" data-action="verify setup" data-step="doctrine2">Verify</div>
+    <div class="ui primary button save disabled" data-action="save setup" data-step="doctrine2">Save</div>
+    <div class="ui error message"></div>
+</form>

@@ -4,6 +4,7 @@ PASSWORD=password
 HOST=localhost
 NAME=cms
 [request]
-NAMESPACE_PREFIX=XframeCMS\
+DEFAULT_VIEW=\\Xframe\\View\\TwigView
+AUTO_REBUILD=false
 [plugin]
 auth0=XframeCMS\Plugin\Auth0Plugin

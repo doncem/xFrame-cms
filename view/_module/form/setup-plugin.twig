@@ -1,0 +1,13 @@
+<form class="ui fluid form disabled" name="setup-plugin" method="POST" action="#save/plugin">
+    {% for plugin, clazz in section %}
+    <div class="inline field disabled">
+        <div class="ui labeled input">
+            <div class="ui label">{{ plugin }}</div>
+            <input type="text" name="plugin[{{ plugin }}]" placeholder="namespace\class" value="{{ clazz }}" />
+        </div>
+    </div>
+    {% endfor %}
+    <div class="ui green button verify disabled" data-action="verify setup" data-step="plugin">Verify</div>
+    <div class="ui primary button save disabled" data-action="save setup" data-step="plugin">Save</div>
+    <div class="ui error message"></div>
+</form>

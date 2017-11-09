@@ -11,38 +11,31 @@
     </h1>
     <div class="ui grid container">
         <div class="five wide column">
-            <div class="ui vertical steps">
-                <div class="active step">
-                    <i class="truck icon"></i>
+            <div class="ui fluid vertical steps" id="setup-container">
+                {% for section in registry|keys %}
+                <div class="{% if registry.setup['IS_SET_' ~ section|upper] %}completed {% endif %}step" id="setup-{{ section }}">
+                    <i class="{{ icons[section] }} icon"></i>
                     <div class="content">
-                        <div class="title">Database</div>
-                        <div class="description">Connect to database</div>
+                        <div class="title">{{ section | capitalize }}</div>
+                        <div class="description">{{ descriptions[section] }}</div>
                     </div>
                 </div>
-                <div class="step">
-                    <i class="credit card icon"></i>
-                    <div class="content">
-                        <div class="title">Billing</div>
-                        <div class="description">Enter billing information</div>
-                    </div>
-                </div>
-                <div class="step">
-                    <i class="info icon"></i>
-                    <div class="content">
-                        <div class="title">Confirm Order</div>
-                        <div class="description">Verify order details</div>
-                    </div>
-              </div>
+                {% endfor %}
             </div>
         </div>
         <div class="eleven wide column">
-            <div class="ui raised padded text segment">
-                <h2 class="ui header">Database</h2>
-                <div>{% include '_module/form/setup-db.twig' with { 'db': registry.database } only %}</div>
+            <div class="ui raised very padded loading segment">
+                {% for key, section in registry %}
+                <div class="hidden">
+                    <h2 class="ui header">{{ key | capitalize }}</h2>
+                    {% include '_module/form/setup-' ~ key ~ '.twig' with { 'section': section } only %}
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-    <div>{{ user.email }} - {{ user.picture }}</div>
 {% endblock %}
 
-{% block footer %}{% endblock %}
+{% block footer %}
+<div>{{ user.email }} - {{ user.picture }}</div>
+{% endblock %}

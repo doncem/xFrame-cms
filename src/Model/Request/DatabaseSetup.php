@@ -11,7 +11,7 @@ use Xframe\Registry;
 use Xframe\Registry\DatabaseRegistry;
 use Xframe\Request\Request;
 
-final class DbSetup extends AbstractRequest
+final class DatabaseSetup extends AbstractRequest
 {
     /**
      * @var DatabaseRegistry
@@ -49,10 +49,17 @@ final class DbSetup extends AbstractRequest
         return $valid;
     }
 
+    public function isConfigValid(array $config)
+    {
+        $this->registry = new DatabaseRegistry($config);
+
+        return $this->isValid();
+    }
+
     public function process(Registry $registry)
     {
         $registry->database = $this->registry;
 
-        $this->saveToIni($registry);
+        return $this->saveToIni($registry);
     }
 }

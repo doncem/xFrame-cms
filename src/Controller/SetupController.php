@@ -2,8 +2,10 @@
 
 namespace XframeCMS\Controller;
 
+use ReflectionClass;
 use Xframe\Request\Controller;
-use XframeCMS\Model\Request\DbSetup;
+use XframeCMS\Model\Request\AbstractRequest;
+use XframeCMS\Model\Setup;
 
 final class SetupController extends Controller
 {
@@ -15,12 +17,65 @@ final class SetupController extends Controller
     }
 
     /**
+     * @param string $step
+     * 
+     * @return AbstractRequest
+     */
+    private function getRequestModel(string $step)
+    {
+        $class = '\\XframeCMS\\Model\\Request\\' . \ucfirst($step) . 'Setup';
+
+        return new $class($this->request);
+    }
+
+    private function getRegistryAsArray()
+    {
+        $registry = [];
+
+        foreach ($this->dic->registry as $section => $sectionConfig) {
+            $registry[$section] = [];
+            $reflecton = new ReflectionClass($sectionConfig);
+            $constants = $reflecton->getConstants();
+
+            if (!empty($constants)) {
+                foreach ($constants as $key => $value) {
+                    $registry[$section][$key] = $sectionConfig->$key;
+                }
+            } else {
+                foreach ($sectionConfig as $key => $value) {
+                    $registry[$section][$key] = $value;
+                }
+            }
+
+            $model = $this->getRequestModel($section);
+
+            $this->dic->registry->setup->{'IS_SET_' . \strtoupper($section)} = $model->isConfigValid($registry[$section]);
+        }
+
+        return $registry;
+    }
+
+    /**
      * @Request setup
      * @Prefilter \XframeCMS\Prefilter\UserPrefilter
      */
     public function setup()
     {
-        $this->view->registry = $this->dic->registry;
+        $registry = $this->getRegistryAsArray();
+        $registry['database']['PASSWORD'] = '';
+
+        $this->view->registry = $registry;
+        $this->view->descriptions = Setup::DESCRIPTIONS;
+        $this->view->icons = Setup::ICONS;
+    }
+
+    private function setSetupImaginaryForm()
+    {
+        $registry = $this->getRegistryAsArray();
+
+        foreach ($registry['setup'] as $key => $value) {
+            $this->request->$key = $value;
+        }
     }
 
     /**
@@ -32,13 +87,11 @@ final class SetupController extends Controller
     public function verify()
     {
         switch ($this->request->step) {
-            case 'db':
-                $model = new DbSetup($this->request);
-
-                $this->view->verified = $model->isValid();
-
-                break;
+            case 'setup':
+                $this->setSetupImaginaryForm();
             default:
+                $this->view->verified = $this->getRequestModel($this->request->step)->isValid();
+
                 break;
         }
     }
@@ -52,19 +105,17 @@ final class SetupController extends Controller
     public function save()
     {
         switch ($this->request->step) {
-            case 'db':
-                $model = new DbSetup($this->request);
+            case 'setup':
+                $this->setSetupImaginaryForm();
+            default:
+                $model = $this->getRequestModel($this->request->step);
 
                 if ($model->isValid()) {
-                    $model->process($this->dic->registry);
-
-                    $this->view->success = true;
+                    $this->view->success = (bool)$model->process($this->dic->registry);
                 } else {
                     $this->view->success = false;
                 }
 
-                break;
-            default:
                 break;
         }
     }

@@ -1,8 +1,8 @@
-<form class="ui fluid form" name="setup-db" method="POST" action="/setup-save/db">
+<form class="ui fluid form" name="setup-database" method="POST" action="#save/database">
     <div class="required inline field">
         <div class="ui corner labeled input">
             <div class="ui label">Username</div>
-            <input type="text" name="db-username" placeholder="username"{% if db.USERNAME %} value="{{ db.USERNAME }}"{% endif %} />
+            <input type="text" name="db-username" placeholder="username"{% if section.USERNAME %} value="{{ section.USERNAME }}"{% endif %} />
             <div class="ui corner label">
                 <i class="asterisk icon"></i>
             </div>
@@ -11,7 +11,7 @@
     <div class="required inline field">
         <div class="ui corner labeled input">
             <div class="ui label">Password</div>
-            <input type="password" name="db-password" placeholder="secret"{% if db.PASSWORD %} value="{{ db.PASSWORD }}"{% endif %} />
+            <input type="password" name="db-password" placeholder="secret" />
             <div class="ui corner label">
                 <i class="asterisk icon"></i>
             </div>
@@ -20,7 +20,7 @@
     <div class="required inline field">
         <div class="ui corner labeled input">
             <div class="ui label">Host</div>
-            <input type="text" name="db-host" placeholder="localhost"{% if db.HOST %} value="{{ db.HOST }}"{% endif %} />
+            <input type="text" name="db-host" placeholder="localhost"{% if section.HOST %} value="{{ section.HOST }}"{% endif %} />
             <div class="ui corner label">
                 <i class="asterisk icon"></i>
             </div>
@@ -29,13 +29,13 @@
     <div class="inline field">
         <div class="ui labeled input">
             <div class="ui label">Port</div>
-            <input type="number" name="db-port" placeholder="3306"{% if db.PORT %} value="{{ db.PORT }}"{% endif %} />
+            <input type="number" name="db-port" placeholder="3306"{% if section.PORT %} value="{{ section.PORT }}"{% endif %} />
         </div>
     </div>
     <div class="required inline field">
         <div class="ui corner labeled input">
             <div class="ui label">Name</div>
-            <input type="text" name="db-name" placeholder="cms"{% if db.NAME %} value="{{ db.NAME }}"{% endif %} />
+            <input type="text" name="db-name" placeholder="cms"{% if section.NAME %} value="{{ section.NAME }}"{% endif %} />
             <div class="ui corner label">
                 <i class="asterisk icon"></i>
             </div>
@@ -44,10 +44,10 @@
     <div class="inline field">
         <div class="ui labeled input">
             <div class="ui label">Table prefix</div>
-            <input type="text" name="db-prefix" placeholder="x"{% if db.PREFIX %} value="{{ db.PREFIX }}"{% endif %} />
+            <input type="text" name="db-prefix" placeholder="x"{% if section.PREFIX %} value="{{ section.PREFIX }}"{% endif %} />
         </div>
     </div>
-    <div class="ui green button verify" data-action="verify setup" data-step="db">Verify</div>
-    <div class="ui primary button save" data-action="save setup" data-step="db">Save</div>
+    <div class="ui green button verify" data-action="verify setup" data-step="database">Verify</div>
+    <div class="ui primary button save" data-action="save setup" data-step="database">Save</div>
     <div class="ui error message"></div>
 </form>

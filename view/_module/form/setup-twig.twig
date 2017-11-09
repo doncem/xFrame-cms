@@ -1,0 +1,11 @@
+<form class="ui fluid form" name="setup-twig" method="POST" action="#save/twig">
+    <div class="inline field">
+        <div class="ui toggle checkbox">
+            <input type="checkbox" class="hidden" name="twig-rebuild"{% if section.AUTO_REBUILD %} checked{% endif %} />
+            <label>Auto Rebuild</label>
+        </div>
+    </div>
+    <div class="ui green button verify" data-action="verify setup" data-step="twig">Verify</div>
+    <div class="ui primary button save" data-action="save setup" data-step="twig">Save</div>
+    <div class="ui error message"></div>
+</form>

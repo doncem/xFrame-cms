@@ -1,0 +1,29 @@
+<form class="ui fluid form" name="setup-cache" method="POST" action="#save/cache">
+    <div class="inline field">
+        <div class="ui labeled input">
+            <div class="ui label">PHP Class</div>
+            <input type="text" name="cache-class" placeholder="\Memcached"{% if section.CACHE_CLASS %} value="{{ section.CACHE_CLASS }}"{% endif %} />
+        </div>
+    </div>
+    <div class="inline field">
+        <div class="ui toggle checkbox">
+            <input type="checkbox" class="hidden" name="cache-enabled"{% if section.ENABLED %} checked{% endif %} />
+            <label>Enabled</label>
+        </div>
+    </div>
+    <div class="inline field">
+        <div class="ui labeled input">
+            <div class="ui label">Host</div>
+            <input type="text" name="cache-host" placeholder="localhost"{% if section.HOST %} value="{{ section.HOST }}"{% endif %} />
+        </div>
+    </div>
+    <div class="inline field">
+        <div class="ui labeled input">
+            <div class="ui label">Port</div>
+            <input type="number" name="cache-port" placeholder="11211"{% if section.PORT %} value="{{ section.PORT }}"{% endif %} />
+        </div>
+    </div>
+    <div class="ui green button verify" data-action="verify setup" data-step="cache">Verify</div>
+    <div class="ui primary button save" data-action="save setup" data-step="cache">Save</div>
+    <div class="ui error message"></div>
+</form>
