@@ -52,6 +52,12 @@ var formFieldRules = {
 };
 
 $(document).ready(function() {
+  var showContainer = function(id) {
+    var elem = $('#' + id);
+    elem.show('slow');
+    elem.parent('.segment').removeClass('loading');
+  }
+
   // checkboxes
 
   $('.ui.checkbox').checkbox();
@@ -60,9 +66,7 @@ $(document).ready(function() {
 
   var nextIncompleteStep = function() {
     $('#setup-container .step:not(.completed):first').addClass('active').each(function() {
-      var elem = $('.ui.form[name="' + $(this).attr('id') + '"]');
-      elem.parent('.hidden').show('slow');
-      elem.closest('.segment').removeClass('loading');
+      showContainer($(this).attr('id') + '-container');
     });
   }
   nextIncompleteStep();
@@ -103,7 +107,7 @@ $(document).ready(function() {
     }
   });
 
-  $('.ui.form[name="setup-db"]').form({
+  $('.ui.form[name="setup-database"]').form({
     on: 'blur',
     inline: true,
     fields: {
@@ -156,14 +160,32 @@ $(document).ready(function() {
         if ('setup' === formNameSplit[formNameSplit.length - 1]) {
           location.href = '/';
         } else {
-          $('#' + name).addClass('completed').removeClass('active');
+          $('#' + formName).addClass('completed').removeClass('active');
           $(this).closest('.segment').addClass('loading')
-          $('#' + name + '-check').children('.label').removeClass('red').addClass('green').children('.icon').removeClass('minus square outline').addClass('checkmark box');
-          form.parent('.hidden').hide("fast", function() {
+          $('#' + formName + '-check').children('.button').removeClass('red').addClass('green').children('.icon').removeClass('minus square outline').addClass('checkmark box');
+          form.parent('.hidden').hide('fast', function() {
             nextIncompleteStep();
           });
         }
       }
     }
+  });
+
+  $('#setup-container > .link.step').on('click', function() {
+    $('#setup-container > .active').removeClass('active');
+    var id = $(this).addClass('active').attr('id');
+    $('.segment > .hidden:visible').hide('fast', function() {
+      $('#' + id + '-container').show('slow');
+    })
+  });
+
+  $('#setup-setup-container .ui.button').on('click', function() {
+    $('#setup-container > .active').removeClass('active');
+    var id = $(this).parent('p').attr('id').split('-');
+    var stepId = id[0] + '-' + id[1];
+    $('#' + stepId).addClass('active');
+    $(this).closest('.hidden').hide('fast', function() {
+      $('#' + stepId + '-container').show('fast');
+    })
   });
 });

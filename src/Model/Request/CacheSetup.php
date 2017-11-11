@@ -34,16 +34,21 @@ final class CacheSetup extends AbstractRequest
         $valid = !$this->registry->ENABLED;
 
         if (!$valid) {
-            $dic = new DependencyInjectionContainer();
-            $dic->registry = new Container();
-            $dic->registry->cache = $this->registry;
-    
-            $plugin = new DefaultCachePlugin($dic);
-    
-            try {
-                $valid = $plugin->init() instanceof $this->registry->CACHE_CLASS;
-            } catch (PDOException $e) {
+            if (\class_exists($this->registry->CACHE_CLASS)) {
+                $dic = new DependencyInjectionContainer();
+                $dic->registry = new Container();
+                $dic->registry->cache = $this->registry;
+        
+                $plugin = new DefaultCachePlugin($dic);
+        
+                try {
+                    $valid = $plugin->init() instanceof $this->registry->CACHE_CLASS;
+                } catch (PDOException $e) {
+                    $valid = false;
+                }
+            } else {
                 $valid = false;
+                $this->registry->ENABLED = false;
             }
         }
 

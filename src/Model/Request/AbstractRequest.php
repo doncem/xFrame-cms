@@ -29,7 +29,11 @@ abstract class AbstractRequest extends AbstractModel
             $contents .= '[' . $section . ']' . PHP_EOL;
 
             foreach ($config as $key => $value) {
-                if ($value instanceof bool || 'IS_' === \mb_substr($key, 0, 3)) {
+                if ($value instanceof bool ||
+                    'IS_' === \mb_substr($key, 0, 3) ||
+                    'on' === $value ||
+                    'true' === $value ||
+                    'false' === $value) {
                     $v = true === (bool)$value ? 'true' : 'false';
                 } else {
                     $v = $value;

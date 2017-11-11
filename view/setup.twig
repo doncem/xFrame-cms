@@ -13,7 +13,7 @@
         <div class="five wide column">
             <div class="ui fluid vertical steps" id="setup-container">
                 {% for section in registry|keys %}
-                <div class="{% if registry.setup['IS_SET_' ~ section|upper] %}completed {% endif %}step" id="setup-{{ section }}">
+                <div class="{% if registry.setup['IS_SET_' ~ section|upper] %}completed {% endif %}link step" id="setup-{{ section }}">
                     <i class="{{ icons[section] }} icon"></i>
                     <div class="content">
                         <div class="title">{{ section | capitalize }}</div>
@@ -26,7 +26,7 @@
         <div class="eleven wide column">
             <div class="ui raised very padded loading segment">
                 {% for key, section in registry %}
-                <div class="hidden">
+                <div class="hidden" id="setup-{{key}}-container">
                     <h2 class="ui header">{{ key | capitalize }}</h2>
                     {% include '_module/form/setup-' ~ key ~ '.twig' with { 'section': section } only %}
                 </div>
