@@ -150,12 +150,19 @@ $(document).ready(function() {
 
       if (isSuccess) {
         var form = $(this).closest('form');
-        $('#' + form.attr('name')).addClass('completed').removeClass('active');
-        $(this).closest('.segment').addClass('loading')
-        $('#' + form.attr('name') + '-check').children('.label').removeClass('red').addClass('green').children('.icon').removeClass('minus square outline').addClass('checkmark box');
-        form.parent('.hidden').hide("fast", function() {
-          nextIncompleteStep();
-        });
+        var formName = form.attr('name');
+        var formNameSplit = formName.split('-');
+
+        if ('setup' === formNameSplit[formNameSplit.length - 1]) {
+          location.href = '/';
+        } else {
+          $('#' + name).addClass('completed').removeClass('active');
+          $(this).closest('.segment').addClass('loading')
+          $('#' + name + '-check').children('.label').removeClass('red').addClass('green').children('.icon').removeClass('minus square outline').addClass('checkmark box');
+          form.parent('.hidden').hide("fast", function() {
+            nextIncompleteStep();
+          });
+        }
       }
     }
   });
