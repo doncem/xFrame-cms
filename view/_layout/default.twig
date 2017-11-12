@@ -21,8 +21,6 @@
     <body>
         {% block contents %}{% endblock %}
 
-        {% block footer %}{% endblock %}
-
         {% if isMobile %}
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
@@ -32,6 +30,8 @@
         {# <script type="text/javascript" src="/js/jquery.serialize-object.min.js?v={{ asset_version }}"></script> #}
         <script type="text/javascript" src="/js/semantic.min.js?v={{ asset_version }}"></script>
         <script type="text/javascript" src="/js/main.js?v={{ asset_version }}"></script>
+
+        {% block footer %}{% endblock %}
     </body>
 </html>
 {#
