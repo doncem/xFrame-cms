@@ -4,7 +4,6 @@
     <property name="help" value="" />
     <property name="standard-all" value="" />
     <property name="standard-diff" value="" />
-    <property name="testPath" value="" />
 
     <target name="lint" hidden="true">
         <echo msg="Checking PHP syntax" />
@@ -16,8 +15,6 @@
                 <include name=".php_cs" />
             </fileset>
         </phplint>
-        <echo msg="Checking LESS syntax" />
-        <exec command="./node_modules/.bin/lessc --lint" passthru="true" />
     </target>
 
     <target name="standards" depends="lint" description="Checking your code stands up for coding requirements">
@@ -49,20 +46,6 @@
         <exec command="php ./vendor/bin/php-cs-fixer fix --config=.php_cs -v --dry-run ${extra-args}" passthru="true" />
     </target>
 
-    <target name="less-compile" description="Compile LESS file" hidden="true">
-        <echo msg="Compiling ${filename}" />
-        <php expression="str_replace('.less', '.min.css', '${filename}')" returnProperty="css" level="debug" />
-        <exec dir="./node_modules/.bin" command="./lessc --no-ie-compat --clean-css='--s1' ../../src/_npm/less/${filename} ../../www/css/${css}" passthru="true" />
-    </target>
-
-    <target name="less" description="Compile LESS files">
-        <foreach param="filename" target="less-compile">
-            <fileset dir="./src/_npm/less">
-                <include name="*.less" />
-            </fileset>
-        </foreach>
-    </target>
-
     <target name="help" description="Display the help screen">
         <switch value="${help}">
             <case value="standards">
@@ -71,11 +54,6 @@
                     Standards are always "--dry-run" because you should never ever ever do automatic code changes by some sort of magical fixer
                     ${line.separator}
                     Usage: phing [-Dstandard-all=1] [-Dstandard-diff=1] standards
-                </echo>
-            </case>
-            <case value="less">
-                <echo>
-                    Scans your less directory (./src/_npm/less) and compiles all first level *.less files to www/css/*.min.css
                 </echo>
             </case>
             <default>
