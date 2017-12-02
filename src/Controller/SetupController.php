@@ -18,7 +18,7 @@ final class SetupController extends Controller
 
     /**
      * @param string $step
-     * 
+     *
      * @return AbstractRequest
      */
     private function getRequestModel(string $step)

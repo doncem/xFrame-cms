@@ -51,6 +51,12 @@ final class DatabaseSetup extends AbstractRequest
 
     public function isConfigValid(array $config)
     {
+        // must re-confirm the host if not localhost
+        // guide as to why https://www.cyberciti.biz/tips/how-do-i-enable-remote-access-to-mysql-database-server.html
+        if ('localhost' !== $config['HOST']) { // don't care about IPs
+            return false;
+        }
+
         $this->registry = new DatabaseRegistry($config);
 
         return $this->isValid();

@@ -53,7 +53,10 @@ $(document).ready(function() {
         method : 'POST',
         serializeForm: true,
         onSuccess: function(response) {
-            $(this).checkSuccess(response, 'verified', 'green', 'Verify')
+            $(this).checkSuccess(response, 'verified', 'green', 'Verify');
+        },
+        onFailure: function(response) {
+            $(this).checkSuccess({'success':false}, 'success', 'green', 'Verify');
         }
     });
 

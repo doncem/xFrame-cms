@@ -38,7 +38,7 @@ findSetupStatus($system->registry);
 
 // add PSR4 prefix if present
 
-$loader->addPsr4('XframeCMS\\', $root . 'src');
+$loader->addPsr4("XframeCMS\\", $root . 'src');
 
 // override default exception handlers
 
