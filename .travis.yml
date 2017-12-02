@@ -4,9 +4,7 @@ language: php
 php:
   - 7.0
   - 7.1
-
-#env:
-#  - CONFIG=dev
+  - 7.2
 
 cache:
   directories:
@@ -17,8 +15,11 @@ branches:
     - master
     - /^[0-9]+\.[0-9]+\.[0-9]+$/
 
-before_script:
+before_install:
+  - composer remove --dev --no-update phpunit/phpunit
   - composer require satooshi/php-coveralls --no-update
+
+install:
   - composer install --no-dev
 
 after_script:
