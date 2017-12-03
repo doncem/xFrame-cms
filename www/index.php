@@ -1,6 +1,7 @@
 <?php
 
 $root = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR;
+
 $loader = require $root . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 // load .env variables to system
@@ -36,9 +37,15 @@ $system->boot();
 
 findSetupStatus($system->registry);
 
-// add PSR4 prefix if present
+// set namespace prefix
 
-$loader->addPsr4("XframeCMS\\", $root . 'src');
+if ('' === $system->registry->request->NAMESPACE_PREFIX) {
+    $src = \realpath($root . 'src');
+    $prefix = \array_filter($loader->getPrefixesPsr4(), function($item) use($src) {
+        return \in_array($src, \array_map('realpath', $item));
+    });
+    $system->registry->request->NAMESPACE_PREFIX = (string) \key($prefix);
+}
 
 // override default exception handlers
 

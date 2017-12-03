@@ -37,5 +37,10 @@
         "mysql-workbench-schema-exporter/doctrine2-exporter": "dev-master",
         "mysql-workbench-schema-exporter/mysql-workbench-schema-exporter": "dev-master",
         "phpunit/phpunit": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "XframeCMS\\": "src/"
+        }
     }
 }
