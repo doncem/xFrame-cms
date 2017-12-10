@@ -8,7 +8,9 @@ class AbstractController extends Controller
 {
     const WHITELISTED_RESOURCES = [
         'callback',
-        'setup'
+        'setup',
+        'setup-verify',
+        'setup-save'
     ];
 
     protected function init()
@@ -16,5 +18,7 @@ class AbstractController extends Controller
         if (!$this->dic->registry->setup->IS_SET && !\in_array($this->request->getRequestedResource(), self::WHITELISTED_RESOURCES)) {
             $this->redirect('/setup');
         }
+
+        $this->view->resource = $this->request->getRequestedResource();
     }
 }

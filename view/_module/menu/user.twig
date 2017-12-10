@@ -1,0 +1,27 @@
+{% if user %}
+<div class="ui large secondary menu mobile tablet only">
+  <a class="toc item">
+    <i class="sidebar medium icon"></i>
+  </a>
+  <div class="right item">
+    <img class="ui avatar image" src="{{ user.picture }}">
+    <span>{{ user.email }}</span>
+  </div>
+</div>
+<div class="ui large top fixed transparent menu tablet or lower hidden">
+    <div class="ui container">
+        {% if resource != "setup" %}
+        <a class="active item">Home1</a>
+        <a class="item">Work1</a>
+        <a class="item">Company</a>
+        <a class="item">asd</a>
+        {% endif %}
+        <div class="right menu">
+            <div class="item">
+                <img class="ui avatar image" src="{{ user.picture }}">
+                <span>{{ user.email }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

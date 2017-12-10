@@ -3,14 +3,16 @@
 namespace XframeCMS\Controller;
 
 use ReflectionClass;
-use Xframe\Request\Controller;
+use XframeCMS\AbstractController;
 use XframeCMS\Model\Request\AbstractRequest;
 use XframeCMS\Model\Setup;
 
-final class SetupController extends Controller
+final class SetupController extends AbstractController
 {
     public function init()
     {
+        parent::init();
+
         if ($this->dic->registry->setup->IS_SET) {
             $this->redirect('/');
         }
