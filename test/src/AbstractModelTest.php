@@ -3,6 +3,7 @@
 namespace XframeCMS;
 
 use PHPUnit\Framework\TestCase;
+use XframeCMS\Model;
 
 class AbstractModelMock extends AbstractModel
 {
