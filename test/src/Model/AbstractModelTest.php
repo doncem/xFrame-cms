@@ -1,9 +1,8 @@
 <?php
 
-namespace XframeCMS;
+namespace XframeCMS\Model;
 
 use PHPUnit\Framework\TestCase;
-use XframeCMS\Model;
 
 class AbstractModelMock extends AbstractModel
 {
