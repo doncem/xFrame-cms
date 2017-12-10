@@ -23,5 +23,8 @@ before_install:
 install:
   - composer install --no-dev
 
+script:
+  - phpunit
+
 after_script:
   - php vendor/bin/coveralls
