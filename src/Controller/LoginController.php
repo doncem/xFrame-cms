@@ -44,7 +44,7 @@ final class LoginController extends AbstractController
 
             $this->redirect('/');
         } else {
-            throw new ApiException("Auth0 API error");
+            throw new ApiException('Auth0 API error');
         }
     }
 }

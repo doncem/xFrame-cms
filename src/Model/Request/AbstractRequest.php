@@ -34,7 +34,7 @@ abstract class AbstractRequest extends AbstractModel
                     'on' === $value ||
                     'true' === $value ||
                     'false' === $value) {
-                    $v = true === (bool)$value ? 'true' : 'false';
+                    $v = true === (bool) $value ? 'true' : 'false';
                 } else {
                     $v = $value;
                 }

@@ -31,5 +31,4 @@ class UserPrefilter extends Prefilter
 
         return true;
     }
-
 }

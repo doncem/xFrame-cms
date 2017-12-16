@@ -39,8 +39,10 @@ finder:
   path:
     - "."
   not-path:
+    - "doctrine-migration"
     - "node_modules"
     - "report"
+    - "src/Model/Db"
     - "tmp"
     - "vendor"
   depth:

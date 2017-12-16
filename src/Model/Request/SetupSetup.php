@@ -18,25 +18,25 @@ final class SetupSetup extends AbstractRequest
         parent::__construct();
 
         $this->registry = new Container([
-            'IS_SET_REQUEST'    => $request->IS_SET_REQUEST,
-            'IS_SET_DATABASE'   => $request->IS_SET_DATABASE,
-            'IS_SET_DOCTRINE2'  => $request->IS_SET_DOCTRINE2,
-            'IS_SET_TWIG'       => $request->IS_SET_TWIG,
-            'IS_SET_CACHE'      => $request->IS_SET_CACHE,
-            'IS_SET_PLUGIN'     => $request->IS_SET_PLUGIN
+            'IS_SET_REQUEST' => $request->IS_SET_REQUEST,
+            'IS_SET_DATABASE' => $request->IS_SET_DATABASE,
+            'IS_SET_DOCTRINE2' => $request->IS_SET_DOCTRINE2,
+            'IS_SET_TWIG' => $request->IS_SET_TWIG,
+            'IS_SET_CACHE' => $request->IS_SET_CACHE,
+            'IS_SET_PLUGIN' => $request->IS_SET_PLUGIN
         ]);
     }
 
     public function isValid()
     {
-        return (
+        return
             $this->registry->IS_SET_REQUEST &&
             $this->registry->IS_SET_DATABASE &&
             $this->registry->IS_SET_DOCTRINE2 &&
             $this->registry->IS_SET_TWIG &&
             $this->registry->IS_SET_CACHE &&
             $this->registry->IS_SET_PLUGIN
-        );
+        ;
     }
 
     public function isConfigValid(array $config)

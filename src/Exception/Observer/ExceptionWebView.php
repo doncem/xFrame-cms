@@ -15,8 +15,8 @@ use Xframe\View\TwigView;
  * http://devzone.zend.com/article/12229
  * @package errors_observers
  */
-class ExceptionWebView implements SplObserver {
-
+class ExceptionWebView implements SplObserver
+{
     /**
      * @var DependencyInjectionContainer;
      */
@@ -32,7 +32,8 @@ class ExceptionWebView implements SplObserver {
      *
      * @param SplSubject $subject
      */
-    public function update(SplSubject $subject) {
+    public function update(SplSubject $subject)
+    {
         $config = \getenv('CONFIG');
         $view = new TwigView(
             $this->dic->registry,
@@ -42,10 +43,10 @@ class ExceptionWebView implements SplObserver {
             'dev' === $config
         );
 
-        $view->isLive = $config == 'live';
+        $view->isLive = 'live' === $config;
         $view->__set('template', 'error');
         $view->errorMessage = $subject->getLastException()->getMessage();
-        $view->errorStack = $config == 'live' ? '' : $subject->getLastException()->getTraceAsString();
+        $view->errorStack = 'live' === $config ? '' : $subject->getLastException()->getTraceAsString();
 
         echo $view->execute();
     }

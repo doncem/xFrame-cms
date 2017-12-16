@@ -51,7 +51,7 @@ final class SetupController extends AbstractController
 
             $model = $this->getRequestModel($section);
 
-            $this->dic->registry->setup->{'IS_SET_' . \strtoupper($section)} = $model->isConfigValid($registry[$section]);
+            $this->dic->registry->setup->{'IS_SET_' . \mb_strtoupper($section)} = $model->isConfigValid($registry[$section]);
         }
 
         return $registry;
@@ -113,7 +113,7 @@ final class SetupController extends AbstractController
                 $model = $this->getRequestModel($this->request->step);
 
                 if ($model->isValid()) {
-                    $this->view->success = (bool)$model->process($this->dic->registry);
+                    $this->view->success = (bool) $model->process($this->dic->registry);
                 } else {
                     $this->view->success = false;
                 }

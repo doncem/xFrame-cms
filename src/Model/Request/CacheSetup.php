@@ -22,10 +22,10 @@ final class CacheSetup extends AbstractRequest
         parent::__construct();
 
         $this->registry = new CacheRegistry([
-            'CACHE_CLASS'   => $request->{'cache-class'},
-            'ENABLED'       => $request->{'cache-enabled'},
-            'HOST'          => $request->{'cache-host'},
-            'PORT'          => $request->{'cache-port'}
+            'CACHE_CLASS' => $request->{'cache-class'},
+            'ENABLED' => $request->{'cache-enabled'},
+            'HOST' => $request->{'cache-host'},
+            'PORT' => $request->{'cache-port'}
         ]);
     }
 
@@ -38,9 +38,9 @@ final class CacheSetup extends AbstractRequest
                 $dic = new DependencyInjectionContainer();
                 $dic->registry = new Container();
                 $dic->registry->cache = $this->registry;
-        
+
                 $plugin = new DefaultCachePlugin($dic);
-        
+
                 try {
                     $valid = $plugin->init() instanceof $this->registry->CACHE_CLASS;
                 } catch (PDOException $e) {

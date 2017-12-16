@@ -27,5 +27,4 @@ class Auth0Plugin extends AbstractPlugin
             'persist_refresh_token' => true,
         ]);
     }
-
 }

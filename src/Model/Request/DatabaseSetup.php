@@ -23,12 +23,12 @@ final class DatabaseSetup extends AbstractRequest
         parent::__construct();
 
         $this->registry = new DatabaseRegistry([
-            'USERNAME'  => $request->{'db-username'},
-            'PASSWORD'  => $request->{'db-password'},
-            'HOST'      => $request->{'db-host'},
-            'PORT'      => $request->{'db-port'},
-            'NAME'      => $request->{'db-name'},
-            'PREFIX'    => $request->{'db-prefix'}
+            'USERNAME' => $request->{'db-username'},
+            'PASSWORD' => $request->{'db-password'},
+            'HOST' => $request->{'db-host'},
+            'PORT' => $request->{'db-port'},
+            'NAME' => $request->{'db-name'},
+            'PREFIX' => $request->{'db-prefix'}
         ]);
     }
 

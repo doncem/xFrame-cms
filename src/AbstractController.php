@@ -15,7 +15,7 @@ class AbstractController extends Controller
 
     protected function init()
     {
-        if (!$this->dic->registry->setup->IS_SET && !\in_array($this->request->getRequestedResource(), self::WHITELISTED_RESOURCES)) {
+        if (!$this->dic->registry->setup->IS_SET && !\in_array($this->request->getRequestedResource(), self::WHITELISTED_RESOURCES, true)) {
             $this->redirect('/setup');
         }
 

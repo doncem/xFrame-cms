@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 class AbstractModelMock extends AbstractModel
 {
     protected $id;
+
     protected $value;
 
     public function __construct()

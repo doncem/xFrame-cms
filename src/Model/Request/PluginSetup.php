@@ -2,8 +2,8 @@
 
 namespace XframeCMS\Model\Request;
 
-use Xframe\Core\DependencyInjectionContainer;
 use Xframe\Container;
+use Xframe\Core\DependencyInjectionContainer;
 use Xframe\Plugin\DefaultPluginContainerPlugin;
 use Xframe\Registry;
 use Xframe\Request\Request;
@@ -32,8 +32,6 @@ final class PluginSetup extends AbstractRequest
         try {
             $plugin->init();
         } catch (\Exception $e) {
-            var_dump($e);
-            die();
             return false;
         }
 
