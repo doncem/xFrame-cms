@@ -19,6 +19,7 @@ before_install:
   - composer config --global github-oauth.github.com $TRAVIS_GITHUB_TOKEN
   - composer remove --dev --no-update phpunit/phpunit
   - composer require satooshi/php-coveralls --no-update
+  - composer require codacy/coverage --no-update
 
 install:
   - composer install --no-dev
@@ -28,3 +29,4 @@ script:
 
 after_script:
   - php vendor/bin/coveralls
+  - php vendor/bin/codacycoverage clover report/coverage-clover/clover.xml
