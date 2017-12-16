@@ -13,6 +13,7 @@ use Xframe\View\TwigView;
  * This code was largely inspired by the devzone article:
  *
  * http://devzone.zend.com/article/12229
+ *
  * @package errors_observers
  */
 class ExceptionWebView implements SplObserver

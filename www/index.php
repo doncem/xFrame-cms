@@ -41,7 +41,7 @@ findSetupStatus($system->registry);
 
 if ('' === $system->registry->request->NAMESPACE_PREFIX) {
     $src = \realpath($root . 'src');
-    $prefix = \array_filter($loader->getPrefixesPsr4(), function($item) use ($src) {
+    $prefix = \array_filter($loader->getPrefixesPsr4(), function ($item) use ($src) {
         return \in_array($src, \array_map('realpath', $item), true);
     });
     $system->registry->request->NAMESPACE_PREFIX = (string) \key($prefix);
