@@ -28,7 +28,7 @@
         "linusnorton/xframe": "~1.2",
         "mobiledetect/mobiledetectlib": "~2.8",
         "doctrine/migrations": "~v1.5",
-        "doctrine/orm": "~v2.5",
+        "doctrine/orm": "~v2.6",
         "auth0/auth0-php": "^5.0",
         "vlucas/phpdotenv": "^2.4"
     },

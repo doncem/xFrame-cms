@@ -1,5 +1,4 @@
 *.bak
-*.lock
 *-lock*
 .env
 /config/*
