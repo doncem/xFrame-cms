@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * XframeCMS\Model\Db\UserAudit
  *
- * @ORM\Entity(repositoryClass="UserAuditRepository")
+ * @ORM\Entity(repositoryClass="XframeCMS\Repository\UserAuditRepository")
  * @ORM\Table(name="_user_audit", indexes={@ORM\Index(name="user_audit_action", columns={"action_id"}), @ORM\Index(name="user_audit_user", columns={"audited_user_id"})})
  */
 class UserAudit extends \XframeCMS\Model\Db\AbstractModel
@@ -36,9 +36,9 @@ class UserAudit extends \XframeCMS\Model\Db\AbstractModel
     protected $data;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $created;
+    protected $created = CURRENT_TIMESTAMP;
 
     /**
      * @ORM\Column(type="integer", options={"unsigned":true})

@@ -9,7 +9,7 @@
         "enhanceManyToManyDetection": true,
         "bundleNamespace": "XframeCMS",
         "entityNamespace": "Model\\Db",
-        "repositoryNamespace": "",
+        "repositoryNamespace": "XframeCMS\\Repository",
         "useAnnotationPrefix": "ORM\\",
         "skipGetterAndSetter": true,
         "extendsClass": "\\XframeCMS\\Model\\Db\\AbstractModel",

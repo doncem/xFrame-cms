@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * XframeCMS\Model\Db\UserProfile
  *
- * @ORM\Entity(repositoryClass="UserProfileRepository")
+ * @ORM\Entity(repositoryClass="XframeCMS\Repository\UserProfileRepository")
  * @ORM\Table(name="_user_profile", uniqueConstraints={@ORM\UniqueConstraint(name="user_profile_user_id", columns={"user_id"})})
  */
 class UserProfile extends \XframeCMS\Model\Db\AbstractModel
@@ -19,22 +19,22 @@ class UserProfile extends \XframeCMS\Model\Db\AbstractModel
     protected $user_id;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true, options={"default":"NULL"})
      */
     protected $nickname;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", nullable=true, options={"default":"NULL"})
      */
     protected $about;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, options={"default":"NULL"})
      */
     protected $profile_pic;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, options={"default":"NULL"})
      */
     protected $signature;
 

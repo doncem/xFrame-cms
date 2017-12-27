@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * XframeCMS\Model\Db\UserBadge
  *
- * @ORM\Entity(repositoryClass="UserBadgeRepository")
+ * @ORM\Entity(repositoryClass="XframeCMS\Repository\UserBadgeRepository")
  * @ORM\Table(name="_user_badge", indexes={@ORM\Index(name="user_badge_user", columns={"user_id"}), @ORM\Index(name="user_badge", columns={"badge_id"})})
  */
 class UserBadge extends \XframeCMS\Model\Db\AbstractModel
@@ -31,9 +31,9 @@ class UserBadge extends \XframeCMS\Model\Db\AbstractModel
     protected $badge_id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $earned;
+    protected $earned = CURRENT_TIMESTAMP;
 
     /**
      * @ORM\OneToMany(targetEntity="User", mappedBy="userBadge")

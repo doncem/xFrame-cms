@@ -3,6 +3,7 @@
 namespace XframeCMS;
 
 use Xframe\Request\Controller;
+use XframeCMS\Model\Db\Menu;
 
 class AbstractController extends Controller
 {
@@ -13,10 +14,24 @@ class AbstractController extends Controller
         'setup-save'
     ];
 
+    private function parseMenu(array $menus)
+    {
+        return $menus;
+    }
+
+    private function setupPostInit()
+    {
+        $this->view->menu = $this->parseMenu($this->dic->em->getRepository(Menu::class)->getActive());
+    }
+
     protected function init()
     {
         if (!$this->dic->registry->setup->IS_SET && !\in_array($this->request->getRequestedResource(), self::WHITELISTED_RESOURCES, true)) {
             $this->redirect('/setup');
+        }
+
+        if (!\in_array($this->request->getRequestedResource(), self::WHITELISTED_RESOURCES, true)) {
+            $this->setupPostInit();
         }
 
         $this->view->resource = $this->request->getRequestedResource();

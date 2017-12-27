@@ -2,6 +2,7 @@
 
 namespace XframeCMS\Model\Db;
 
+use Doctrine\ORM\Mapping\MappedSuperclass;
 use JsonSerializable;
 
 /**
@@ -12,7 +13,6 @@ use JsonSerializable;
 abstract class AbstractModel implements JsonSerializable
 {
     /**
-     * (PHP 5 &gt;= 5.4.0)<br/>
      * Map class variables into an array.
      *
      * @return array

@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * XframeCMS\Model\Db\Page
  *
- * @ORM\Entity(repositoryClass="PageRepository")
+ * @ORM\Entity(repositoryClass="XframeCMS\Repository\PageRepository")
  * @ORM\Table(name="_page", indexes={@ORM\Index(name="page_author_id", columns={"author_id"})}, uniqueConstraints={@ORM\UniqueConstraint(name="url_param_UNIQUE", columns={"url_param"})})
  */
 class Page extends \XframeCMS\Model\Db\AbstractModel
@@ -31,9 +31,9 @@ class Page extends \XframeCMS\Model\Db\AbstractModel
     protected $author_id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $created;
+    protected $created = CURRENT_TIMESTAMP;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -41,9 +41,9 @@ class Page extends \XframeCMS\Model\Db\AbstractModel
     protected $updated;
 
     /**
-     * @ORM\Column(type="boolean", options={"unsigned":true})
+     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"0"})
      */
-    protected $is_published;
+    protected $is_published = 0;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -51,9 +51,9 @@ class Page extends \XframeCMS\Model\Db\AbstractModel
     protected $controller;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"default":"0"})
      */
-    protected $point;
+    protected $point = 0;
 
     /**
      * @ORM\OneToMany(targetEntity="User", mappedBy="page")

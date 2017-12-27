@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * XframeCMS\Model\Db\Menu
  *
- * @ORM\Entity(repositoryClass="MenuRepository")
+ * @ORM\Entity(repositoryClass="XframeCMS\Repository\MenuRepository")
  * @ORM\Table(name="_menu", indexes={@ORM\Index(name="menu_page_id", columns={"page_id"}), @ORM\Index(name="menu_parent_id", columns={"parent_id"})})
  */
 class Menu extends \XframeCMS\Model\Db\AbstractModel
@@ -41,9 +41,9 @@ class Menu extends \XframeCMS\Model\Db\AbstractModel
     protected $parent_id;
 
     /**
-     * @ORM\Column(type="boolean", options={"unsigned":true})
+     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"1"})
      */
-    protected $is_active;
+    protected $is_active = 1;
 
     /**
      * @ORM\OneToMany(targetEntity="Page", mappedBy="menu")

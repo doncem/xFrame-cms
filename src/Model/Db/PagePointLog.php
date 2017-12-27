@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * XframeCMS\Model\Db\PagePointLog
  *
- * @ORM\Entity(repositoryClass="PagePointLogRepository")
+ * @ORM\Entity(repositoryClass="XframeCMS\Repository\PagePointLogRepository")
  * @ORM\Table(name="_page_point_log", indexes={@ORM\Index(name="page_point", columns={"point_id"}), @ORM\Index(name="page_point_user", columns={"user_id"}), @ORM\Index(name="page_point_page", columns={"page_id"})})
  */
 class PagePointLog extends \XframeCMS\Model\Db\AbstractModel
@@ -36,9 +36,9 @@ class PagePointLog extends \XframeCMS\Model\Db\AbstractModel
     protected $point_id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $created;
+    protected $created = CURRENT_TIMESTAMP;
 
     /**
      * @ORM\OneToMany(targetEntity="User", mappedBy="pagePointLog")

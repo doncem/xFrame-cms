@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * XframeCMS\Model\Db\TmpUser
  *
- * @ORM\Entity(repositoryClass="TmpUserRepository")
+ * @ORM\Entity(repositoryClass="XframeCMS\Repository\TmpUserRepository")
  * @ORM\Table(name="tmp_user", uniqueConstraints={@ORM\UniqueConstraint(name="tmp_email", columns={"email"})})
  */
 class TmpUser extends \XframeCMS\Model\Db\AbstractModel
@@ -23,9 +23,9 @@ class TmpUser extends \XframeCMS\Model\Db\AbstractModel
     protected $token;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $created;
+    protected $created = CURRENT_TIMESTAMP;
 
     public function __construct()
     {

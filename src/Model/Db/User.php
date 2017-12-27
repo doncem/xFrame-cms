@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * XframeCMS\Model\Db\User
  *
- * @ORM\Entity(repositoryClass="UserRepository")
+ * @ORM\Entity(repositoryClass="XframeCMS\Repository\UserRepository")
  * @ORM\Table(name="_user", uniqueConstraints={@ORM\UniqueConstraint(name="user_email", columns={"email"})})
  */
 class User extends \XframeCMS\Model\Db\AbstractModel
@@ -25,14 +25,14 @@ class User extends \XframeCMS\Model\Db\AbstractModel
     protected $email;
 
     /**
-     * @ORM\Column(name="`password`", type="string", length=72, nullable=true)
+     * @ORM\Column(name="`password`", type="string", length=72, nullable=true, options={"default":"NULL"})
      */
     protected $password;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $registered;
+    protected $registered = CURRENT_TIMESTAMP;
 
     /**
      * @ORM\Column(type="string", length=44)
@@ -42,34 +42,34 @@ class User extends \XframeCMS\Model\Db\AbstractModel
     /**
      * time to live in minutes
      *
-     * @ORM\Column(type="smallint", options={"unsigned":true})
+     * @ORM\Column(type="smallint", options={"unsigned":true, "default":"'30'"})
      */
-    protected $session_ttl;
+    protected $session_ttl = 30;
 
     /**
-     * @ORM\Column(type="boolean", options={"unsigned":true})
+     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"'0'"})
      */
-    protected $is_admin;
+    protected $is_admin = 0;
 
     /**
-     * @ORM\Column(type="boolean", options={"unsigned":true})
+     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"'0'"})
      */
-    protected $is_active;
+    protected $is_active = 0;
 
     /**
-     * @ORM\Column(type="boolean", options={"unsigned":true})
+     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"'0'"})
      */
-    protected $is_locked;
+    protected $is_locked = 0;
 
     /**
-     * @ORM\Column(type="boolean", options={"unsigned":true})
+     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"'1'"})
      */
-    protected $is_public;
+    protected $is_public = 1;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"default":"0"})
      */
-    protected $points;
+    protected $points = 0;
 
     /**
      * @ORM\ManyToOne(targetEntity="UserAudit", inversedBy="users")
