@@ -20,7 +20,7 @@ before_install:
   - composer require codacy/coverage --no-update
 
 install:
-  - composer install --no-dev
+  - composer update --no-dev
 
 script:
   - phpunit
