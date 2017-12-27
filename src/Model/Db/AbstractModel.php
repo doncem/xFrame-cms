@@ -1,6 +1,6 @@
 <?php
 
-namespace XframeCMS\Model;
+namespace XframeCMS\Model\Db;
 
 use JsonSerializable;
 

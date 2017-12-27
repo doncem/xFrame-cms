@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="TmpUserRepository")
  * @ORM\Table(name="tmp_user", uniqueConstraints={@ORM\UniqueConstraint(name="tmp_email", columns={"email"})})
  */
-class TmpUser extends \XframeCMS\Model\AbstractModel
+class TmpUser extends \XframeCMS\Model\Db\AbstractModel
 {
     /**
      * @ORM\Column(type="string", length=100)
