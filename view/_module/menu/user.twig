@@ -1,3 +1,9 @@
+{% set user_avatar %}
+<div class="item">
+    <img class="ui avatar image" src="{{ user.picture }}">
+    <span>{{ user.email }}</span>
+</div>
+{% endset %}
 {% if user %}
 <div class="ui large secondary menu mobile tablet only">
   <a class="toc item">
@@ -17,11 +23,11 @@
         <a class="item">asd</a>
         {% endif %}
         <div class="right menu">
-            <div class="item">
-                <img class="ui avatar image" src="{{ user.picture }}">
-                <span>{{ user.email }}</span>
-            </div>
+            {{ user_avatar }}
         </div>
     </div>
 </div>
 {% endif %}
+<div class="ui vertical wide sidebar menu">
+    {{ user_avatar }}
+</div>
