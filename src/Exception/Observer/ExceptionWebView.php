@@ -35,19 +35,18 @@ class ExceptionWebView implements SplObserver
      */
     public function update(SplSubject $subject)
     {
-        $config = \getenv('CONFIG');
         $view = new TwigView(
             $this->dic->registry,
             $this->dic->root,
             $this->dic->tmp,
             'error',
-            'dev' === $config
+            $this->dic->isDev
         );
 
-        $view->isLive = 'live' === $config;
+        $view->isLive = $this->dic->isLive;
         $view->__set('template', 'error');
         $view->errorMessage = $subject->getLastException()->getMessage();
-        $view->errorStack = 'live' === $config ? '' : $subject->getLastException()->getTraceAsString();
+        $view->errorStack = $this->dic->isLive ? '' : $subject->getLastException()->getTraceAsString();
 
         echo $view->execute();
     }

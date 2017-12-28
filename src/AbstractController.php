@@ -22,6 +22,7 @@ class AbstractController extends Controller
     private function setupPostInit()
     {
         $this->view->menu = $this->parseMenu($this->dic->em->getRepository(Menu::class)->getActive());
+        $this->view->isLive = $this->dic->isLive;
     }
 
     protected function init()
