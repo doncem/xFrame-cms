@@ -960,16 +960,16 @@
         },
         {
             "name": "linusnorton/xframe",
-            "version": "1.2.5",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doncem/xFrame.git",
-                "reference": "0a6568b067c943d81852c02002c7f904214152e2"
+                "reference": "3b63c5db206911810a18e33f7fa79ee72e6fad7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doncem/xFrame/zipball/0a6568b067c943d81852c02002c7f904214152e2",
-                "reference": "0a6568b067c943d81852c02002c7f904214152e2",
+                "url": "https://api.github.com/repos/doncem/xFrame/zipball/3b63c5db206911810a18e33f7fa79ee72e6fad7a",
+                "reference": "3b63c5db206911810a18e33f7fa79ee72e6fad7a",
                 "shasum": ""
             },
             "require": {
@@ -978,10 +978,9 @@
                 "twig/twig": "~v2.4"
             },
             "require-dev": {
-                "doctrine/migrations": "~v1.5",
-                "doctrine/orm": "~v2.5",
-                "friendsofphp/php-cs-fixer": "dev-master",
-                "phpunit/phpunit": "dev-master"
+                "doctrine/migrations": "~v1.6",
+                "doctrine/orm": "~v2.6",
+                "phpunit/phpunit": "~6.5"
             },
             "suggest": {
                 "doctrine/migrations": "For in-built migration tool",
@@ -1030,10 +1029,10 @@
                 "php"
             ],
             "support": {
-                "source": "https://github.com/doncem/xFrame/tree/1.2.5",
+                "source": "https://github.com/doncem/xFrame/tree/1.2.6",
                 "issues": "https://github.com/doncem/xFrame/issues"
             },
-            "time": "2017-11-04T23:27:41+00:00"
+            "time": "2017-12-28T12:53:06+00:00"
         },
         {
             "name": "minime/annotations",
