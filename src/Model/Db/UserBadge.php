@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="XframeCMS\Repository\UserBadgeRepository")
  * @ORM\Table(name="_user_badge", indexes={@ORM\Index(name="user_badge_user", columns={"user_id"}), @ORM\Index(name="user_badge", columns={"badge_id"})})
  */
-class UserBadge extends \XframeCMS\Model\Db\AbstractModel
+class UserBadge extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Id

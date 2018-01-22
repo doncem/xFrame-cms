@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="XframeCMS\Repository\UserPointLogRepository")
  * @ORM\Table(name="_user_point_log", indexes={@ORM\Index(name="user_point", columns={"point_id"}), @ORM\Index(name="user_point_user", columns={"user_id"})})
  */
-class UserPointLog extends \XframeCMS\Model\Db\AbstractModel
+class UserPointLog extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Id

@@ -960,16 +960,16 @@
         },
         {
             "name": "linusnorton/xframe",
-            "version": "1.2.6",
+            "version": "1.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doncem/xFrame.git",
-                "reference": "3b63c5db206911810a18e33f7fa79ee72e6fad7a"
+                "reference": "95e4634e644e868e9265088c17474b35fecbe9c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doncem/xFrame/zipball/3b63c5db206911810a18e33f7fa79ee72e6fad7a",
-                "reference": "3b63c5db206911810a18e33f7fa79ee72e6fad7a",
+                "url": "https://api.github.com/repos/doncem/xFrame/zipball/95e4634e644e868e9265088c17474b35fecbe9c7",
+                "reference": "95e4634e644e868e9265088c17474b35fecbe9c7",
                 "shasum": ""
             },
             "require": {
@@ -1029,10 +1029,10 @@
                 "php"
             ],
             "support": {
-                "source": "https://github.com/doncem/xFrame/tree/1.2.6",
+                "source": "https://github.com/doncem/xFrame/tree/1.2.7",
                 "issues": "https://github.com/doncem/xFrame/issues"
             },
-            "time": "2017-12-28T12:53:06+00:00"
+            "time": "2017-12-28T13:35:51+00:00"
         },
         {
             "name": "minime/annotations",

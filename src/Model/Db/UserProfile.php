@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="XframeCMS\Repository\UserProfileRepository")
  * @ORM\Table(name="_user_profile", uniqueConstraints={@ORM\UniqueConstraint(name="user_profile_user_id", columns={"user_id"})})
  */
-class UserProfile extends \XframeCMS\Model\Db\AbstractModel
+class UserProfile extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Column(type="integer", options={"unsigned":true})

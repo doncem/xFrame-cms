@@ -1,6 +1,6 @@
 <?php
 
-namespace XframeCMS\Model\Db;
+namespace XframeCMS\Model;
 
 use Doctrine\ORM\Mapping\MappedSuperclass;
 use JsonSerializable;

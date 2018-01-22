@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="XframeCMS\Repository\MenuRepository")
  * @ORM\Table(name="_menu", indexes={@ORM\Index(name="menu_page_id", columns={"page_id"}), @ORM\Index(name="menu_parent_id", columns={"parent_id"})})
  */
-class Menu extends \XframeCMS\Model\Db\AbstractModel
+class Menu extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Id

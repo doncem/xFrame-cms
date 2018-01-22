@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="XframeCMS\Repository\PageRepository")
  * @ORM\Table(name="_page", indexes={@ORM\Index(name="page_author_id", columns={"author_id"})}, uniqueConstraints={@ORM\UniqueConstraint(name="url_param_UNIQUE", columns={"url_param"})})
  */
-class Page extends \XframeCMS\Model\Db\AbstractModel
+class Page extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Id

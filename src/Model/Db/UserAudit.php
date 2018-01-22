@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="XframeCMS\Repository\UserAuditRepository")
  * @ORM\Table(name="_user_audit", indexes={@ORM\Index(name="user_audit_action", columns={"action_id"}), @ORM\Index(name="user_audit_user", columns={"audited_user_id"})})
  */
-class UserAudit extends \XframeCMS\Model\Db\AbstractModel
+class UserAudit extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Id

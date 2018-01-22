@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="XframeCMS\Repository\UserRepository")
  * @ORM\Table(name="_user", uniqueConstraints={@ORM\UniqueConstraint(name="user_email", columns={"email"})})
  */
-class User extends \XframeCMS\Model\Db\AbstractModel
+class User extends \XframeCMS\Model\AbstractModel
 {
     /**
      * @ORM\Id
