@@ -407,20 +407,20 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462"
+                "reference": "5527a48b7313d15261292c149e55e26eae771b0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/e11d84c6e018beedd929cff5220969a3c6d1d462",
-                "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5527a48b7313d15261292c149e55e26eae771b0a",
+                "reference": "5527a48b7313d15261292c149e55e26eae771b0a",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0"
+                "php": "^7.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^6.2"
@@ -428,7 +428,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2.x-dev"
+                    "dev-master": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -470,7 +470,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2017-07-22T12:18:28+00:00"
+            "time": "2018-01-09T20:05:19+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -1410,16 +1410,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "de8cf039eacdec59d83f7def67e3b8ff5ed46714"
+                "reference": "fe0e69d7162cba0885791cf7eea5f0d7bc0f897e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/de8cf039eacdec59d83f7def67e3b8ff5ed46714",
-                "reference": "de8cf039eacdec59d83f7def67e3b8ff5ed46714",
+                "url": "https://api.github.com/repos/symfony/console/zipball/fe0e69d7162cba0885791cf7eea5f0d7bc0f897e",
+                "reference": "fe0e69d7162cba0885791cf7eea5f0d7bc0f897e",
                 "shasum": ""
             },
             "require": {
@@ -1474,7 +1474,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-12-14T19:48:22+00:00"
+            "time": "2018-01-03T07:38:00+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1537,16 +1537,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "a5ee52d155f06ad23b19eb63c31228ff56ad1116"
+                "reference": "b84f646b9490d2101e2c25ddeec77ceefbda2eee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/a5ee52d155f06ad23b19eb63c31228ff56ad1116",
-                "reference": "a5ee52d155f06ad23b19eb63c31228ff56ad1116",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/b84f646b9490d2101e2c25ddeec77ceefbda2eee",
+                "reference": "b84f646b9490d2101e2c25ddeec77ceefbda2eee",
                 "shasum": ""
             },
             "require": {
@@ -1591,7 +1591,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-12-12T08:41:51+00:00"
+            "time": "2018-01-03T07:38:00+00:00"
         },
         {
             "name": "twig/twig",
@@ -1824,12 +1824,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mysql-workbench-schema-exporter/doctrine2-exporter.git",
-                "reference": "e0898491808eb148bb6064d1b9a23dc6be9b5493"
+                "reference": "13d4e6b519f2ffff89b6388575a0ff1ec2b240a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mysql-workbench-schema-exporter/doctrine2-exporter/zipball/e0898491808eb148bb6064d1b9a23dc6be9b5493",
-                "reference": "e0898491808eb148bb6064d1b9a23dc6be9b5493",
+                "url": "https://api.github.com/repos/mysql-workbench-schema-exporter/doctrine2-exporter/zipball/13d4e6b519f2ffff89b6388575a0ff1ec2b240a6",
+                "reference": "13d4e6b519f2ffff89b6388575a0ff1ec2b240a6",
                 "shasum": ""
             },
             "require": {
@@ -1872,7 +1872,7 @@
                 "mysql",
                 "mysql workbench"
             ],
-            "time": "2017-12-22T20:18:00+00:00"
+            "time": "2017-12-29T21:00:15+00:00"
         },
         {
             "name": "mysql-workbench-schema-exporter/mysql-workbench-schema-exporter",

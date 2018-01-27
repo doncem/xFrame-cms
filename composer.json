@@ -12,6 +12,9 @@
         }
     ],
     "minimum-stability": "stable",
+    "config": {
+        "optimize-autoloader": true
+    },
     "repositories": [
         {
             "type": "vcs",

@@ -1,9 +1,19 @@
-{% extends "_layout/default.twig" %}
+{% extends "_layout/admin.twig" %}
 
 {% block meta_description %}{% endblock %}
 
-{% block title %}Admin{% endblock %}
-
-{% block contents %}{% endblock %}
-
-{% block footer %}{% endblock %}
+{% block contents %}
+{% include '_module/form/admin-index.twig' with { 'title': web.title } only %}
+<table>
+    <tr>
+        <th>Package</th>
+        <th>Version</th>
+    </tr>
+    {% for package,version in package_versions %}
+    <tr>
+        <td>{{ package }}</td>
+        <td>{{ version }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * XframeCMS\Model\Db\PagePointLog
  *
  * @ORM\Entity(repositoryClass="XframeCMS\Repository\PagePointLogRepository")
- * @ORM\Table(name="_page_point_log", indexes={@ORM\Index(name="page_point", columns={"point_id"}), @ORM\Index(name="page_point_user", columns={"user_id"}), @ORM\Index(name="page_point_page", columns={"page_id"})})
+ * @ORM\Table(name="_page_point_log", indexes={@ORM\Index(name="page_point_user", columns={"user_id"}), @ORM\Index(name="page_point_page", columns={"page_id"})})
  */
 class PagePointLog extends \XframeCMS\Model\AbstractModel
 {
@@ -31,9 +31,9 @@ class PagePointLog extends \XframeCMS\Model\AbstractModel
     protected $page_id;
 
     /**
-     * @ORM\Column(type="integer", options={"unsigned":true})
+     * @ORM\Column(type="smallint")
      */
-    protected $point_id;
+    protected $point;
 
     /**
      * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
@@ -60,6 +60,6 @@ class PagePointLog extends \XframeCMS\Model\AbstractModel
 
     public function __sleep()
     {
-        return array('id', 'user_id', 'page_id', 'point_id', 'created');
+        return array('id', 'user_id', 'page_id', 'point', 'created');
     }
 }

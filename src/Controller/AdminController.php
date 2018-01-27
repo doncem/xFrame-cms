@@ -5,10 +5,6 @@ namespace XframeCMS\Controller;
 use XframeCMS\AbstractController;
 use XframeCMS\Controller\Helper\AbstractHelper;
 
-/**
- * Description of Index
- * @package admin_controllers
- */
 class AdminController extends AbstractController
 {
     /**
@@ -20,8 +16,8 @@ class AdminController extends AbstractController
      */
     public function admin()
     {
-        $action = $this->request->action;
-        $helper = "";
+        $action = $this->request->action || "";
+        $helper = "Index";
 
         switch ($action) {
             case "logout":
@@ -38,6 +34,7 @@ class AdminController extends AbstractController
         }
 
         $this->runHelper($helper, $action);
+        $this->view->action = \strtolower($helper);
     }
 
     /**
@@ -46,17 +43,14 @@ class AdminController extends AbstractController
      * @param string $helper
      * @param string $action
      */
-    private function runHelper($helper, $action)
+    private function runHelper(string $helper, string $action)
     {
         if (\mb_strlen($helper) > 0) {
             $classname = "XframeCMS\\Controller\\Helper\\{$helper}Helper";
             /* @var $helper AbstractHelper */
-            $helper = new $classname($this->dic, $action);
-            $helper->setRequest($this->request);
+            $helper = new $classname($this->dic, $this->request, $this->view, $action);
 
-            $result = $helper->process();
-
-            $this->view->setTemplate($this->package . $helper->getTemplateName());
+            $helper->process();
         }
     }
 }

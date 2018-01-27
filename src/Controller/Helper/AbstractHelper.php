@@ -4,13 +4,10 @@ namespace XframeCMS\Controller\Helper;
 
 use Xframe\Core\DependencyInjectionContainer;
 use Xframe\Request\Request;
+use Xframe\View\View;
 
-/**
- * Description of AdminAuth
- * @package admin_helpers
- */
-abstract class AbstractHelper {
-
+abstract class AbstractHelper
+{
     /**
      * Dependency injection container.
      *
@@ -30,7 +27,14 @@ abstract class AbstractHelper {
      *
      * @var Request
      */
-    protected $request = [];
+    protected $request;
+
+    /**
+     * View template.
+     *
+     * @var View
+     */
+    protected $view;
 
     /**
      * Current user.
@@ -50,29 +54,30 @@ abstract class AbstractHelper {
      * Initiate helper. Check if user is present.
      *
      * @param DependencyInjectionContainer  $dic
+     * @param Request                       $request
+     * @param View                          $view
      * @param string                        $action
      * @param array                         $user
      */
-    public function __construct(DependencyInjectionContainer $dic, string $action, array $user = []) {
+    public function __construct(DependencyInjectionContainer $dic,
+                                Request $request,
+                                View $view,
+                                string $action,
+                                array $user = [])
+    {
         // if (is_null($user) && get_called_class() != "admin\\helpers\\Auth") {
         //     header("location:/admin");
         // }
 
         $this->dic = $dic;
+        $this->request = $request;
+        $this->view = $view;
         $this->action = $action;
         $this->user = $user;
     }
 
-    /**
-     * Set it.
-     *
-     * @param Request $request
-     */
-    public function setRequest(Request $request) {
-        $this->request = $request;
-    }
-
-    public function process() {
+    public function process()
+    {
         if (0 === \mb_strpos($this->request->getRequestedResource(), 'ajax-')) {
             $this->processType = "AJAX";
 
@@ -82,6 +87,8 @@ abstract class AbstractHelper {
 
             return $this->processRegular();
         }
+
+        $this->view->setTemplate($this->request->getRequestedResource() . DIRECTORY_SEPARATOR . $this->getTemplateName());
     }
 
     /**
@@ -89,7 +96,8 @@ abstract class AbstractHelper {
      *
      * @param string $parameter
      */
-    protected function redirect($parameter = null) {
+    protected function redirect($parameter = null)
+    {
         header("location:/admin/{$this->action}" . (strlen($parameter) > 0 ? "/{$parameter}" : ""));
     }
 
@@ -98,16 +106,15 @@ abstract class AbstractHelper {
      *
      * @return string
      */
-    public function getProcessType() {
+    public function getProcessType()
+    {
         return $this->processType;
     }
 
-    abstract public function getTemplateName();
+    abstract protected function getTemplateName();
 
     /**
      * Contains 'error' key with message if something went wrong, and 'data' key if anything must be passed.
-     *
-     * @return array
      */
     abstract protected function processRegular();
 

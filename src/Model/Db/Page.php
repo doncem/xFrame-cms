@@ -53,7 +53,7 @@ class Page extends \XframeCMS\Model\AbstractModel
     /**
      * @ORM\Column(type="integer", options={"default":"0"})
      */
-    protected $point = 0;
+    protected $total_points = 0;
 
     /**
      * @ORM\OneToMany(targetEntity="User", mappedBy="page")
@@ -80,6 +80,6 @@ class Page extends \XframeCMS\Model\AbstractModel
 
     public function __sleep()
     {
-        return array('id', 'url_param', 'author_id', 'created', 'updated', 'is_published', 'controller', 'point');
+        return array('id', 'url_param', 'author_id', 'created', 'updated', 'is_published', 'controller', 'total_points');
     }
 }
