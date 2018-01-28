@@ -6,7 +6,7 @@ namespace XframeCMS\Controller\Helper;
  * Description of Auth
  * @package admin_helpers
  */
-class AuthHelper extends AbstractHelper {
+abstract class AuthHelper extends AbstractHelper {
 
     const COOKIE_LIFETIME = 3600;
 

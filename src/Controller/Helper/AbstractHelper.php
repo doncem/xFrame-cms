@@ -76,50 +76,24 @@ abstract class AbstractHelper
         $this->user = $user;
     }
 
-    public function process()
+    public function run()
     {
-        if (0 === \mb_strpos($this->request->getRequestedResource(), 'ajax-')) {
-            $this->processType = "AJAX";
+        $this->runAction();
 
-            return $this->processAJAX();
-        } else {
-            $this->processType = "regular";
-
-            return $this->processRegular();
-        }
-
-        $this->view->setTemplate($this->request->getRequestedResource() . DIRECTORY_SEPARATOR . $this->getTemplateName());
+        $this->view->setTemplate($this->request->getRequestedResource() . DIRECTORY_SEPARATOR . $this->getTemplateName() . '.twig');
     }
 
-    /**
-     * General redirector. Goes to current action and extra parameters if any defined.
-     *
-     * @param string $parameter
-     */
-    protected function redirect($parameter = null)
+    protected function markAsSuccess()
     {
-        header("location:/admin/{$this->action}" . (strlen($parameter) > 0 ? "/{$parameter}" : ""));
+        $this->view->success = true;
     }
 
-    /**
-     * Get type of process: AJAX || regular.
-     *
-     * @return string
-     */
-    public function getProcessType()
+    protected function markAsFailed()
     {
-        return $this->processType;
+        $this->view->success = false;
     }
 
     abstract protected function getTemplateName();
 
-    /**
-     * Contains 'error' key with message if something went wrong, and 'data' key if anything must be passed.
-     */
-    abstract protected function processRegular();
-
-    /**
-     * On any AJAX call prefixed with 'ajax-' - execute this method.
-     */
-    abstract protected function processAJAX();
+    abstract protected function runAction();
 }

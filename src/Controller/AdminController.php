@@ -8,18 +8,37 @@ use XframeCMS\Controller\Helper\AbstractHelper;
 class AdminController extends AbstractController
 {
     /**
-     * Homepage landing page.
-     *
      * @Request admin
-     * @Parameter -> ["action", "\\Xframe\\Validation\\Regex('/(\\S+|^$)/')", false]
+     * @Parameter -> ["action", "\\Xframe\\Validation\\Regex('/(\\S+|^$)/')", false, ""]
      * @Template "admin/index"
      */
     public function admin()
     {
-        $action = $this->request->action || "";
+        $helper = $this->getHelperClass();
+        $this->runHelper($helper, $this->request->action);
+
+        $this->view->action = \strtolower($helper);
+    }
+
+    /**
+     * @Request admin-save
+     * @Parameter -> ["action", "\\Xframe\\Validation\\Regex('/(\\S+|^$)/')", false, ""]
+     * @View \Xframe\View\JsonView
+     */
+    public function adminSave()
+    {
+        $helper = $this->getHelperClass();
+        $this->runHelper($helper, $this->request->action);
+    }
+
+    /**
+     * @return string Helper class
+     */
+    private function getHelperClass()
+    {
         $helper = "Index";
 
-        switch ($action) {
+        switch ($this->request->action) {
             case "logout":
             case "login":
                 $helper = "Auth";
@@ -33,24 +52,20 @@ class AdminController extends AbstractController
                 break;
         }
 
-        $this->runHelper($helper, $action);
-        $this->view->action = \strtolower($helper);
+        return "XframeCMS\\Controller\\Helper\\{$helper}Helper";
     }
 
     /**
      * Run request processor aka helper.
      *
-     * @param string $helper
+     * @param string $helperClass
      * @param string $action
      */
-    private function runHelper(string $helper, string $action)
+    private function runHelper(string $helperClass, string $action)
     {
-        if (\mb_strlen($helper) > 0) {
-            $classname = "XframeCMS\\Controller\\Helper\\{$helper}Helper";
-            /* @var $helper AbstractHelper */
-            $helper = new $classname($this->dic, $this->request, $this->view, $action);
+        /* @var $helper AbstractHelper */
+        $helper = new $helperClass($this->dic, $this->request, $this->view, $action);
 
-            $helper->process();
-        }
+        $helper->run();
     }
 }

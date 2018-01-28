@@ -4,6 +4,7 @@ namespace XframeCMS;
 
 use Xframe\Request\Controller;
 use XframeCMS\Model\Db\Menu;
+use XframeCMS\Model\Website;
 
 class AbstractController extends Controller
 {
@@ -36,5 +37,6 @@ class AbstractController extends Controller
         }
 
         $this->view->resource = $this->request->getRequestedResource();
+        $this->view->web = Website::getInstance($this->dic)->getWebData();
     }
 }
