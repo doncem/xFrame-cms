@@ -38,7 +38,7 @@
     "require-dev": {
         "mysql-workbench-schema-exporter/doctrine2-exporter": "dev-master",
         "mysql-workbench-schema-exporter/mysql-workbench-schema-exporter": "dev-master",
-        "phpunit/phpunit": "dev-master"
+        "phpunit/phpunit": "^6"
     },
     "autoload": {
         "psr-4": {
