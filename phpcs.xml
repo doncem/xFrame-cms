@@ -5,6 +5,7 @@
     <exclude-pattern>*/doctrine-migration/*</exclude-pattern>
     <exclude-pattern>*/node_nodules/*</exclude-pattern>
     <exclude-pattern>*/report/*</exclude-pattern>
+    <exclude-pattern>*/src/Model/Db/*</exclude-pattern>
     <exclude-pattern>*/tmp/*</exclude-pattern>
     <exclude-pattern>*/vendor/*</exclude-pattern>
 

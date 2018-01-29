@@ -44,13 +44,6 @@ abstract class AbstractHelper
     protected $user = [];
 
     /**
-     * Flag for type of process.
-     *
-     * @var string
-     */
-    private $process_type;
-
-    /**
      * Initiate helper. Check if user is present.
      *
      * @param DependencyInjectionContainer  $dic

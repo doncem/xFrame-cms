@@ -19,7 +19,7 @@ class Website
     /**
      * @var Website
      */
-    private static $_instance;
+    private static $instance;
 
     private function __construct(string $webFile)
     {
@@ -32,8 +32,8 @@ class Website
      */
     public static function getInstance(DependencyInjectionContainer $dic)
     {
-        if (self::$_instance instanceof Website) {
-            return self::$_instance;
+        if (self::$instance instanceof Website) {
+            return self::$instance;
         }
 
         return new Website($dic->root . 'website.json');
