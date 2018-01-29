@@ -10,6 +10,9 @@ use Xframe\Registry;
 use Xframe\Registry\CacheRegistry;
 use Xframe\Request\Request;
 
+/**
+ * Cache setup request model.
+ */
 final class CacheSetup extends AbstractRequest
 {
     /**
@@ -17,6 +20,9 @@ final class CacheSetup extends AbstractRequest
      */
     private $registry;
 
+    /**
+     * Initialise model by assigning cache registry values from request object.
+     */
     public function __construct(Request $request)
     {
         parent::__construct();
@@ -29,6 +35,9 @@ final class CacheSetup extends AbstractRequest
         ]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isValid()
     {
         $valid = !$this->registry->ENABLED;
@@ -55,6 +64,9 @@ final class CacheSetup extends AbstractRequest
         return $valid;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isConfigValid(array $config)
     {
         $this->registry = new CacheRegistry($config);
@@ -62,6 +74,9 @@ final class CacheSetup extends AbstractRequest
         return $this->isValid();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function process(Registry $registry)
     {
         $registry->cache = $this->registry;

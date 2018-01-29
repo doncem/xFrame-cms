@@ -13,6 +13,8 @@
         <type>error</type>
     </rule>
 
+    <arg name="tab-width" value="4"/>
+
     <rule ref="PEAR"/>
     <!-- Include some sniffs from other standards that don't conflict with PEAR -->
     <rule ref="Squiz.Arrays.ArrayBracketSpacing" />

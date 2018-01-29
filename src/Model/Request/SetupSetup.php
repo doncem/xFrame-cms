@@ -6,6 +6,9 @@ use Xframe\Container;
 use Xframe\Registry;
 use Xframe\Request\Request;
 
+/**
+ * Additional setup request model.
+ */
 final class SetupSetup extends AbstractRequest
 {
     /**
@@ -13,6 +16,9 @@ final class SetupSetup extends AbstractRequest
      */
     private $registry;
 
+    /**
+     * Initialise model by assigning setup registry values from request object.
+     */
     public function __construct(Request $request)
     {
         parent::__construct();
@@ -27,6 +33,9 @@ final class SetupSetup extends AbstractRequest
         ]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isValid()
     {
         return
@@ -39,6 +48,9 @@ final class SetupSetup extends AbstractRequest
         ;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isConfigValid(array $config)
     {
         $this->registry = new Container($config);
@@ -46,6 +58,9 @@ final class SetupSetup extends AbstractRequest
         return $this->isValid();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function process(Registry $registry)
     {
         $registry->setup = $this->registry;

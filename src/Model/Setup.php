@@ -2,6 +2,9 @@
 
 namespace XframeCMS\Model;
 
+/**
+ * Static container for view content.
+ */
 final class Setup
 {
     const DESCRIPTIONS = [

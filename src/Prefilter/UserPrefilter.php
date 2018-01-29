@@ -7,8 +7,14 @@ use Xframe\Request\Controller;
 use Xframe\Request\Prefilter;
 use Xframe\Request\Request;
 
+/**
+ * User prefilter.
+ */
 class UserPrefilter extends Prefilter
 {
+    /**
+     * Get user information from Auth0 plugin.
+     */
     public function run(Request $request, Controller $controller)
     {
         $session = $this->dic->plugin->auth0;

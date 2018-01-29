@@ -5,8 +5,16 @@ namespace XframeCMS\Plugin;
 use Xframe\Plugin\AbstractPlugin;
 use XframeCMS\Plugin\Helper\Auth0PluginHelper;
 
+/**
+ * Auth0 plugin.
+ */
 class Auth0Plugin extends AbstractPlugin
 {
+    /**
+     * Construct Auth0 client.
+     *
+     * @return Auth0PluginHelper
+     */
     public function init()
     {
         $auth0Audience = \getenv('AUTH0_AUDIENCE');

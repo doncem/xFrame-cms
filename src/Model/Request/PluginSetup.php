@@ -8,6 +8,9 @@ use Xframe\Plugin\DefaultPluginContainerPlugin;
 use Xframe\Registry;
 use Xframe\Request\Request;
 
+/**
+ * Plugin setup request model.
+ */
 final class PluginSetup extends AbstractRequest
 {
     /**
@@ -15,6 +18,9 @@ final class PluginSetup extends AbstractRequest
      */
     private $registry;
 
+    /**
+     * Initialise model by assigning plugin registry values from request model.
+     */
     public function __construct(Request $request)
     {
         parent::__construct();
@@ -22,6 +28,9 @@ final class PluginSetup extends AbstractRequest
         $this->registry = new Container($request->plugin ?? []);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isValid()
     {
         $dic = new DependencyInjectionContainer();
@@ -38,6 +47,9 @@ final class PluginSetup extends AbstractRequest
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isConfigValid(array $config)
     {
         $this->registry = new Container($config);
@@ -45,6 +57,9 @@ final class PluginSetup extends AbstractRequest
         return $this->isValid();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function process(Registry $registry)
     {
         $registry->plugin = $this->registry;

@@ -5,6 +5,9 @@ namespace XframeCMS\Controller;
 use XframeCMS\AbstractController;
 use XframeCMS\Controller\Helper\AbstractHelper;
 
+/**
+ * Controller for admin actions.
+ */
 class AdminController extends AbstractController
 {
     /**

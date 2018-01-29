@@ -11,6 +11,9 @@ use Xframe\Registry;
 use Xframe\Registry\DatabaseRegistry;
 use Xframe\Request\Request;
 
+/**
+ * Database setup request model
+ */
 final class DatabaseSetup extends AbstractRequest
 {
     /**
@@ -18,6 +21,9 @@ final class DatabaseSetup extends AbstractRequest
      */
     private $registry;
 
+    /**
+     * Initialise model by assigning database registry values from request object.
+     */
     public function __construct(Request $request)
     {
         parent::__construct();
@@ -32,6 +38,9 @@ final class DatabaseSetup extends AbstractRequest
         ]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isValid()
     {
         $dic = new DependencyInjectionContainer();
@@ -49,6 +58,9 @@ final class DatabaseSetup extends AbstractRequest
         return $valid;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isConfigValid(array $config)
     {
         // must re-confirm the host if not localhost
@@ -62,6 +74,9 @@ final class DatabaseSetup extends AbstractRequest
         return $this->isValid();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function process(Registry $registry)
     {
         $registry->database = $this->registry;

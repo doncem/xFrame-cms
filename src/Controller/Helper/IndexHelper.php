@@ -5,13 +5,22 @@ namespace XframeCMS\Controller\Helper;
 use PackageVersions\Versions;
 use XframeCMS\Model\Website;
 
+/**
+ * Admin index helper to view/save website essentials.
+ */
 class IndexHelper extends AbstractHelper
 {
+    /**
+     * {@inheritdoc}
+     */
     protected function getTemplateName()
     {
         return 'index';
     }
 
+    /**
+     * Retrieve list of packages used in this project.
+     */
     protected function runAction()
     {
         if (isset($this->request->{'admin-web-title'})) {
@@ -24,6 +33,9 @@ class IndexHelper extends AbstractHelper
         }
     }
 
+    /**
+     * Save web title
+     */
     private function saveWebTitle()
     {
         $title = $this->request->{'admin-web-title'};

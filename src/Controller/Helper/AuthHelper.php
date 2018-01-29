@@ -3,7 +3,8 @@
 namespace XframeCMS\Controller\Helper;
 
 /**
- * Description of Auth
+ * Description of Auth.
+ *
  * @package admin_helpers
  */
 abstract class AuthHelper extends AbstractHelper {
@@ -13,6 +14,9 @@ abstract class AuthHelper extends AbstractHelper {
     private $doRedirect = true;
     // private $error;
 
+    /**
+     * {@inheritdoc}
+     */
     public function getTemplateName() {
         if ($this->doRedirect) {
             throw new \Exception("You should not render anything directed to Auth helper", 0, null);
@@ -21,6 +25,9 @@ abstract class AuthHelper extends AbstractHelper {
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function processRegular() {
         // if ($this->action == "login") {
         //     $this->login();
@@ -36,6 +43,9 @@ abstract class AuthHelper extends AbstractHelper {
         // return array("error" => $this->error);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function processAJAX() {}
 
     // private function login() {
@@ -66,7 +76,8 @@ abstract class AuthHelper extends AbstractHelper {
     // }
 
     /**
-     * Check if current user is logged in
+     * Check if current user is logged in.
+     *
      * @param string $userSession
      * @return boolean
      */
@@ -75,7 +86,8 @@ abstract class AuthHelper extends AbstractHelper {
     }
 
     /**
-     * Updating for self::COOKIE_LIFETIME starting from now
+     * Updating for self::COOKIE_LIFETIME starting from now.
+     *
      * @param string $sessionId
      */
     public static function updateCookie($sessionId) {

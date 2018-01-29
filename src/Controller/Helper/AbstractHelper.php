@@ -6,6 +6,9 @@ use Xframe\Core\DependencyInjectionContainer;
 use Xframe\Request\Request;
 use Xframe\View\View;
 
+/**
+ * Abstract helper which runs the code and assigns template to <code>{requested resource}/{template name}</code>.
+ */
 abstract class AbstractHelper
 {
     /**
@@ -69,6 +72,9 @@ abstract class AbstractHelper
         $this->user = $user;
     }
 
+    /**
+     * Run the helper wrapper.
+     */
     public function run()
     {
         $this->runAction();
@@ -76,17 +82,31 @@ abstract class AbstractHelper
         $this->view->setTemplate($this->request->getRequestedResource() . DIRECTORY_SEPARATOR . $this->getTemplateName() . '.twig');
     }
 
+    /**
+     * Assigns <code>true</code> to view variable <code>success</code>
+     */
     protected function markAsSuccess()
     {
         $this->view->success = true;
     }
 
+    /**
+     * Assigns <code>false</code> to view variable <code>success</code>
+     */
     protected function markAsFailed()
     {
         $this->view->success = false;
     }
 
+    /**
+     * Get template name.
+     *
+     * @return string
+     */
     abstract protected function getTemplateName();
 
+    /**
+     * Run the helper.
+     */
     abstract protected function runAction();
 }

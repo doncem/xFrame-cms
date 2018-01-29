@@ -4,6 +4,9 @@ namespace XframeCMS\Controller;
 
 use XframeCMS\AbstractController;
 
+/**
+ * Controller for index (default) actions.
+ */
 final class IndexController extends AbstractController
 {
     /**

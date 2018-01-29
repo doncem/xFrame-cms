@@ -19,10 +19,13 @@ use Xframe\View\TwigView;
 class ExceptionWebView implements SplObserver
 {
     /**
-     * @var DependencyInjectionContainer;
+     * @var DependencyInjectionContainer
      */
     private $dic;
 
+    /**
+     * Initialise the observer.
+     */
     public function __construct(DependencyInjectionContainer $dic)
     {
         $this->dic = $dic;

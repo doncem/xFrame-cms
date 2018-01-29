@@ -6,6 +6,9 @@ use Xframe\Registry;
 use Xframe\Registry\TwigRegistry;
 use Xframe\Request\Request;
 
+/**
+ * Twig setup request model.
+ */
 final class TwigSetup extends AbstractRequest
 {
     /**
@@ -13,6 +16,9 @@ final class TwigSetup extends AbstractRequest
      */
     private $registry;
 
+    /**
+     * Initialise model by assigning twig registry values from request object.
+     */
     public function __construct(Request $request)
     {
         parent::__construct();
@@ -22,11 +28,17 @@ final class TwigSetup extends AbstractRequest
         ]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isValid()
     {
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isConfigValid(array $config)
     {
         $this->registry = new TwigRegistry($config);
@@ -34,6 +46,9 @@ final class TwigSetup extends AbstractRequest
         return $this->isValid();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function process(Registry $registry)
     {
         $registry->twig = $this->registry;

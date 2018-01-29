@@ -7,8 +7,14 @@ use XframeCMS\AbstractController;
 use XframeCMS\Model\Request\AbstractRequest;
 use XframeCMS\Model\Setup;
 
+/**
+ * Controller for setup actions.
+ */
 final class SetupController extends AbstractController
 {
+    /**
+     * In case web is set - disallow executing the rest of the controller actions.
+     */
     public function init()
     {
         parent::init();
@@ -30,6 +36,9 @@ final class SetupController extends AbstractController
         return new $class($this->request);
     }
 
+    /**
+     * Get all the registry as an array.
+     */
     private function getRegistryAsArray()
     {
         $registry = [];
@@ -71,6 +80,9 @@ final class SetupController extends AbstractController
         $this->view->icons = Setup::ICONS;
     }
 
+    /**
+     * Include config of itself - setup section.
+     */
     private function setSetupImaginaryForm()
     {
         $registry = $this->getRegistryAsArray();

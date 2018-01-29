@@ -5,8 +5,14 @@ namespace XframeCMS\Controller;
 use Auth0\SDK\Exception\ApiException;
 use XframeCMS\AbstractController;
 
+/**
+ * Controller for logging in and out actions.
+ */
 final class LoginController extends AbstractController
 {
+    /**
+     * Set variables to the view.
+     */
     private function setView()
     {
         $this->view->type = $this->request->getRequestedResource();
