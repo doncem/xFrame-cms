@@ -38,28 +38,28 @@ abstract class AuthHelper extends AbstractHelper {
 
     protected function processAJAX() {}
 
-    private function login() {
-        // if (isset($this->request->username) && isset($this->request->password)) {
-        //     $model = new db\User($this->dic->em);
-        //     $user = $model->getByUsernameAndPassword($this->request->username, $this->request->password);
+    // private function login() {
+    //     if (isset($this->request->username) && isset($this->request->password)) {
+    //         $model = new db\User($this->dic->em);
+    //         $user = $model->getByUsernameAndPassword($this->request->username, $this->request->password);
 
-        //     if ($user instanceof \admin\models\admUser) {
-        //         if ($user->getActive()) {
-        //             $session_id = date("ymd") . md5(mt_rand(100, 999)) . date("His");
-        //             self::updateCookie($session_id);
-        //             $user->last_session = $session_id;
-        //             $user->last_login = new \DateTime();
-        //             $model->save($user);
-        //         } else {
-        //             $this->do_redirect = false;
-        //             $this->error = "User is not active. Check your email";
-        //         }
-        //     } else {
-        //         $this->do_redirect = false;
-        //         $this->error = "Wrong username and/or password";
-        //     }
-        // }
-    }
+    //         if ($user instanceof \admin\models\admUser) {
+    //             if ($user->getActive()) {
+    //                 $session_id = date("ymd") . md5(mt_rand(100, 999)) . date("His");
+    //                 self::updateCookie($session_id);
+    //                 $user->last_session = $session_id;
+    //                 $user->last_login = new \DateTime();
+    //                 $model->save($user);
+    //             } else {
+    //                 $this->do_redirect = false;
+    //                 $this->error = "User is not active. Check your email";
+    //             }
+    //         } else {
+    //             $this->do_redirect = false;
+    //             $this->error = "Wrong username and/or password";
+    //         }
+    //     }
+    // }
 
     // private function logout() {
     //     self::destroyCookie();
@@ -67,18 +67,18 @@ abstract class AuthHelper extends AbstractHelper {
 
     /**
      * Check if current user is logged in
-     * @param string $user_session
+     * @param string $userSession
      * @return boolean
      */
-    public static function isLoggedIn($user_session) {
+    public static function isLoggedIn($userSession) {
         // return filter_input(INPUT_COOKIE, "session_id") === $user_session && strlen($user_session) == 44;
     }
 
     /**
      * Updating for self::COOKIE_LIFETIME starting from now
-     * @param string $session_id
+     * @param string $sessionId
      */
-    public static function updateCookie($session_id) {
+    public static function updateCookie($sessionId) {
         // setcookie("session_id", $session_id, time() + self::COOKIE_LIFETIME, "/", null, false, true);
     }
 
