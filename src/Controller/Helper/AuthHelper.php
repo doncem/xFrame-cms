@@ -7,8 +7,8 @@ namespace XframeCMS\Controller\Helper;
  *
  * @package admin_helpers
  */
-abstract class AuthHelper extends AbstractHelper {
-
+abstract class AuthHelper extends AbstractHelper
+{
     const COOKIE_LIFETIME = 3600;
 
     private $doRedirect = true;
@@ -17,7 +17,8 @@ abstract class AuthHelper extends AbstractHelper {
     /**
      * {@inheritdoc}
      */
-    public function getTemplateName() {
+    public function getTemplateName()
+    {
         if ($this->doRedirect) {
             throw new \Exception("You should not render anything directed to Auth helper", 0, null);
         } else {
@@ -28,7 +29,8 @@ abstract class AuthHelper extends AbstractHelper {
     /**
      * {@inheritdoc}
      */
-    protected function processRegular() {
+    protected function processRegular()
+    {
         // if ($this->action == "login") {
         //     $this->login();
         // } else {
@@ -46,7 +48,9 @@ abstract class AuthHelper extends AbstractHelper {
     /**
      * {@inheritdoc}
      */
-    protected function processAJAX() {}
+    protected function processAJAX()
+    {
+    }
 
     // private function login() {
     //     if (isset($this->request->username) && isset($this->request->password)) {
@@ -81,7 +85,8 @@ abstract class AuthHelper extends AbstractHelper {
      * @param string $userSession
      * @return boolean
      */
-    public static function isLoggedIn($userSession) {
+    public static function isLoggedIn($userSession)
+    {
         // return filter_input(INPUT_COOKIE, "session_id") === $user_session && strlen($user_session) == 44;
     }
 
@@ -90,14 +95,16 @@ abstract class AuthHelper extends AbstractHelper {
      *
      * @param string $sessionId
      */
-    public static function updateCookie($sessionId) {
+    public static function updateCookie($sessionId)
+    {
         // setcookie("session_id", $session_id, time() + self::COOKIE_LIFETIME, "/", null, false, true);
     }
 
     /**
      * DESTROY!
      */
-    public static function destroyCookie() {
+    public static function destroyCookie()
+    {
         // setcookie("session_id", "", time() - (60 * 60 * 24), "/", null, false, true);
     }
 }

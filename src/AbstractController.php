@@ -20,6 +20,10 @@ class AbstractController extends Controller
 
     /**
      * Parse menu into usable array for template.
+     *
+     * @param array $menus
+     *
+     * @return array
      */
     private function parseMenu(array $menus)
     {

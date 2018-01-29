@@ -9,8 +9,14 @@ use PHPUnit\Framework\TestCase;
  */
 class AbstractModelMock extends AbstractModel
 {
+    /**
+     * @var mixed
+     */
     protected $id;
 
+    /**
+     * @var mixed
+     */
     protected $value;
 
     /**
@@ -32,6 +38,8 @@ class AbstractModelMock extends AbstractModel
 
     /**
      * Setter.
+     *
+     * @param mixed $value
      */
     public function setValue($value)
     {
