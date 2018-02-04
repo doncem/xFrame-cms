@@ -42,29 +42,29 @@ class User extends \XframeCMS\Model\AbstractModel
     /**
      * time to live in minutes
      *
-     * @ORM\Column(type="smallint", options={"unsigned":true, "default":"'30'"})
+     * @ORM\Column(type="smallint", options={"unsigned":true, "default":"30"})
      */
     protected $session_ttl = 30;
 
     /**
-     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"'0'"})
+     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"0"})
      */
-    protected $is_admin = 0;
+    protected $is_admin = false;
 
     /**
-     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"'0'"})
+     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"0"})
      */
-    protected $is_active = 0;
+    protected $is_active = false;
 
     /**
-     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"'0'"})
+     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"0"})
      */
-    protected $is_locked = 0;
+    protected $is_locked = false;
 
     /**
-     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"'1'"})
+     * @ORM\Column(type="boolean", options={"unsigned":true, "default":"1"})
      */
-    protected $is_public = 1;
+    protected $is_public = true;
 
     /**
      * @ORM\Column(type="integer", options={"default":"0"})

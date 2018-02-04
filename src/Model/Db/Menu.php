@@ -43,7 +43,7 @@ class Menu extends \XframeCMS\Model\AbstractModel
     /**
      * @ORM\Column(type="boolean", options={"unsigned":true, "default":"1"})
      */
-    protected $is_active = 1;
+    protected $is_active = true;
 
     /**
      * @ORM\OneToMany(targetEntity="Page", mappedBy="menu")

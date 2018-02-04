@@ -43,7 +43,7 @@ class Page extends \XframeCMS\Model\AbstractModel
     /**
      * @ORM\Column(type="boolean", options={"unsigned":true, "default":"0"})
      */
-    protected $is_published = 0;
+    protected $is_published = false;
 
     /**
      * @ORM\Column(type="string", length=50)
