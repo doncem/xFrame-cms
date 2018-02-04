@@ -46,10 +46,9 @@ class Menu extends \XframeCMS\Model\AbstractModel
     protected $is_active = true;
 
     /**
-     * @ORM\OneToMany(targetEntity="Page", mappedBy="menu")
-     * @ORM\JoinColumn(name="page_id", referencedColumnName="id", nullable=false)
+     * @ORM\OneToOne(targetEntity="Page", mappedBy="menu")
      */
-    protected $pages;
+    protected $page;
 
     /**
      * @ORM\OneToMany(targetEntity="Menu", mappedBy="menu")

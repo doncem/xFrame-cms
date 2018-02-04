@@ -39,10 +39,9 @@ class UserProfile extends \XframeCMS\Model\AbstractModel
     protected $signature;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="userProfile")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
+     * @ORM\OneToOne(targetEntity="User", mappedBy="userProfile")
      */
-    protected $users;
+    protected $user;
 
     public function __construct()
     {

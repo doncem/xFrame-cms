@@ -62,7 +62,7 @@ class Page extends \XframeCMS\Model\AbstractModel
     protected $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Menu", inversedBy="pages")
+     * @ORM\OneToOne(targetEntity="Menu", inversedBy="page")
      * @ORM\JoinColumn(name="id", referencedColumnName="page_id", nullable=false)
      */
     protected $menu;

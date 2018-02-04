@@ -78,7 +78,7 @@ class User extends \XframeCMS\Model\AbstractModel
     protected $userAudit;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserProfile", inversedBy="users")
+     * @ORM\OneToOne(targetEntity="UserProfile", inversedBy="user")
      * @ORM\JoinColumn(name="id", referencedColumnName="user_id", nullable=false, onDelete="CASCADE")
      */
     protected $userProfile;
