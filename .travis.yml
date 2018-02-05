@@ -15,7 +15,7 @@ branches:
 
 before_install:
   - composer config --global github-oauth.github.com $TRAVIS_GITHUB_TOKEN
-  - composer remove --dev --no-update phpunit/phpunit
+#  - composer remove --dev --no-update phpunit/phpunit
   - composer require php-coveralls/php-coveralls --no-update
   - composer require codacy/coverage --no-update
 
