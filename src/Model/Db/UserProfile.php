@@ -9,11 +9,12 @@ use Doctrine\Common\Collections\ArrayCollection;
  * XframeCMS\Model\Db\UserProfile
  *
  * @ORM\Entity(repositoryClass="XframeCMS\Repository\UserProfileRepository")
- * @ORM\Table(name="_user_profile", uniqueConstraints={@ORM\UniqueConstraint(name="user_profile_user_id", columns={"user_id"})})
+ * @ORM\Table(name="_user_profile")
  */
 class UserProfile extends \XframeCMS\Model\AbstractModel
 {
     /**
+     * @ORM\Id
      * @ORM\Column(type="integer", options={"unsigned":true})
      */
     protected $user_id;

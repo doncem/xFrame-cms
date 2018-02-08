@@ -8,11 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
  * XframeCMS\Model\Db\TmpUser
  *
  * @ORM\Entity(repositoryClass="XframeCMS\Repository\TmpUserRepository")
- * @ORM\Table(name="tmp_user", uniqueConstraints={@ORM\UniqueConstraint(name="tmp_email", columns={"email"})})
+ * @ORM\Table(name="tmp_user")
  */
 class TmpUser extends \XframeCMS\Model\AbstractModel
 {
     /**
+     * @ORM\Id
      * @ORM\Column(type="string", length=100)
      */
     protected $email;
