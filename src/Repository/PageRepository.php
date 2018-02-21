@@ -16,4 +16,15 @@ class PageRepository extends EntityRepository
     {
         return $this->findAll();
     }
+
+    public function getPageById(string $pageId = null)
+    {
+        if (null === $pageId) {
+            return null;
+        }
+
+        $this->findBy([
+            'id' => $pageId
+        ]);
+    }
 }

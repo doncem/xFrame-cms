@@ -34,7 +34,11 @@ class PageHelper extends AbstractHelper
         if (isset($this->request->{'admin-web-title'})) {
             // $this->saveWebTitle();
         } else {
-            $this->view->pages = $this->dic->em->getRepository(Page::class)->getAll();
+            if ('index' === $this->templateName) {
+                $this->view->pages = $this->dic->em->getRepository(Page::class)->getAll();
+            } else {
+                $this->view->page = $this->dic->em->getRepository(Page::class)->getPageById($this->request->identifier);
+            }
         }
     }
 

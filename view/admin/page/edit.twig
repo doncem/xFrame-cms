@@ -1,0 +1,13 @@
+{% extends "_layout/admin.twig" %}
+
+{% block meta_description %}{% endblock %}
+
+{% block contents %}
+{% if page and action == "edit-page" %}
+    {{ page }}
+{% elseif action == "create-page" %}
+    Creating page
+{% else %}
+    Page not found
+{% endif %}
+{% endblock %}

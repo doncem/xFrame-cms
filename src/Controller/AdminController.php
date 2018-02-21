@@ -13,6 +13,7 @@ class AdminController extends AbstractController
     /**
      * @Request admin
      * @Parameter -> ["action", "\\Xframe\\Validation\\Regex('/(\\S+|^$)/')", false, ""]
+     * @Parameter -> ["identifier", null, false]
      * @Template "admin/index"
      */
     public function admin()
@@ -27,6 +28,7 @@ class AdminController extends AbstractController
     /**
      * @Request admin-save
      * @Parameter -> ["action", "\\Xframe\\Validation\\Regex('/(\\S+|^$)/')", false, ""]
+     * @Parameter -> ["identifier", null, false]
      * @View \Xframe\View\JsonView
      */
     public function adminSave()
@@ -40,16 +42,18 @@ class AdminController extends AbstractController
      */
     private function getHelperClass()
     {
-        $helper = "Index";
+        $helper = 'Index';
 
         switch ($this->request->action) {
-            case "logout":
-            case "login":
-                $helper = "Auth";
+            case 'logout':
+            case 'login':
+                $helper = 'Auth';
 
                 break;
-            case "page":
-                $helper = "Page";
+            case 'page':
+            case 'create-page':
+            case 'edit-page':
+                $helper = 'Page';
 
                 break;
             default:
