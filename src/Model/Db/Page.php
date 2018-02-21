@@ -36,11 +36,6 @@ class Page extends \XframeCMS\Model\AbstractModel
     protected $created = CURRENT_TIMESTAMP;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    protected $updated;
-
-    /**
      * @ORM\Column(type="boolean", options={"unsigned":true, "default":"0"})
      */
     protected $is_published = false;
@@ -56,30 +51,37 @@ class Page extends \XframeCMS\Model\AbstractModel
     protected $total_points = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="page")
-     * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable=false)
-     */
-    protected $users;
-
-    /**
-     * @ORM\OneToOne(targetEntity="Menu", inversedBy="page")
-     * @ORM\JoinColumn(name="id", referencedColumnName="page_id", nullable=false)
+     * @ORM\OneToOne(targetEntity="Menu", mappedBy="page")
      */
     protected $menu;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PagePointLog", inversedBy="pages")
+     * @ORM\OneToMany(targetEntity="PagePointLog", mappedBy="page")
      * @ORM\JoinColumn(name="id", referencedColumnName="page_id", nullable=false)
      */
-    protected $pagePointLog;
+    protected $pagePointLogs;
+
+    /**
+     * @ORM\OneToMany(targetEntity="PageUpdateLog", mappedBy="page")
+     * @ORM\JoinColumn(name="id", referencedColumnName="page_id", nullable=false)
+     */
+    protected $pageUpdateLogs;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="pages")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable=false)
+     */
+    protected $user;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->menus = new ArrayCollection();
+        $this->pagePointLogs = new ArrayCollection();
+        $this->pageUpdateLogs = new ArrayCollection();
     }
 
     public function __sleep()
     {
-        return array('id', 'url_param', 'author_id', 'created', 'updated', 'is_published', 'controller', 'total_points');
+        return array('id', 'url_param', 'author_id', 'created', 'is_published', 'controller', 'total_points');
     }
 }

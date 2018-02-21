@@ -3,7 +3,6 @@
 namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * XframeCMS\Model\Db\UserProfile
@@ -40,13 +39,13 @@ class UserProfile extends \XframeCMS\Model\AbstractModel
     protected $signature;
 
     /**
-     * @ORM\OneToOne(targetEntity="User", mappedBy="userProfile")
+     * @ORM\OneToOne(targetEntity="User", inversedBy="userProfile")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     protected $user;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
     }
 
     public function __sleep()

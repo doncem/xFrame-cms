@@ -3,6 +3,7 @@
 namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * XframeCMS\Model\Db\User
@@ -72,43 +73,55 @@ class User extends \XframeCMS\Model\AbstractModel
     protected $points = 0;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserAudit", inversedBy="users")
-     * @ORM\JoinColumn(name="id", referencedColumnName="audited_user_id", nullable=false)
+     * @ORM\OneToMany(targetEntity="Page", mappedBy="user")
+     * @ORM\JoinColumn(name="id", referencedColumnName="author_id", nullable=false)
      */
-    protected $userAudit;
+    protected $pages;
 
     /**
-     * @ORM\OneToOne(targetEntity="UserProfile", inversedBy="user")
-     * @ORM\JoinColumn(name="id", referencedColumnName="user_id", nullable=false, onDelete="CASCADE")
+     * @ORM\OneToMany(targetEntity="PagePointLog", mappedBy="user")
+     * @ORM\JoinColumn(name="id", referencedColumnName="user_id", nullable=false)
+     */
+    protected $pagePointLogs;
+
+    /**
+     * @ORM\OneToMany(targetEntity="PageUpdateLog", mappedBy="user")
+     * @ORM\JoinColumn(name="id", referencedColumnName="author_id", nullable=false)
+     */
+    protected $pageUpdateLogs;
+
+    /**
+     * @ORM\OneToMany(targetEntity="UserAudit", mappedBy="user")
+     * @ORM\JoinColumn(name="id", referencedColumnName="audited_user_id", nullable=false)
+     */
+    protected $userAudits;
+
+    /**
+     * @ORM\OneToMany(targetEntity="UserBadge", mappedBy="user")
+     * @ORM\JoinColumn(name="id", referencedColumnName="user_id", nullable=false)
+     */
+    protected $userBadges;
+
+    /**
+     * @ORM\OneToMany(targetEntity="UserPointLog", mappedBy="user")
+     * @ORM\JoinColumn(name="id", referencedColumnName="user_id", nullable=false)
+     */
+    protected $userPointLogs;
+
+    /**
+     * @ORM\OneToOne(targetEntity="UserProfile", mappedBy="user")
      */
     protected $userProfile;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Page", inversedBy="users")
-     * @ORM\JoinColumn(name="id", referencedColumnName="author_id", nullable=false)
-     */
-    protected $page;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="UserPointLog", inversedBy="users")
-     * @ORM\JoinColumn(name="id", referencedColumnName="user_id", nullable=false)
-     */
-    protected $userPointLog;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="PagePointLog", inversedBy="users")
-     * @ORM\JoinColumn(name="id", referencedColumnName="user_id", nullable=false)
-     */
-    protected $pagePointLog;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="UserBadge", inversedBy="users")
-     * @ORM\JoinColumn(name="id", referencedColumnName="user_id", nullable=false)
-     */
-    protected $userBadge;
-
     public function __construct()
     {
+        $this->pages = new ArrayCollection();
+        $this->pagePointLogs = new ArrayCollection();
+        $this->pageUpdateLogs = new ArrayCollection();
+        $this->userAudits = new ArrayCollection();
+        $this->userBadges = new ArrayCollection();
+        $this->userPointLogs = new ArrayCollection();
+        $this->userProfiles = new ArrayCollection();
     }
 
     public function __sleep()

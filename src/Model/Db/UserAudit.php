@@ -3,7 +3,6 @@
 namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * XframeCMS\Model\Db\UserAudit
@@ -46,14 +45,13 @@ class UserAudit extends \XframeCMS\Model\AbstractModel
     protected $user_id;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="userAudit")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="userAudits")
      * @ORM\JoinColumn(name="audited_user_id", referencedColumnName="id", nullable=false)
      */
-    protected $users;
+    protected $user;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
     }
 
     public function __sleep()

@@ -3,7 +3,6 @@
 namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * XframeCMS\Model\Db\PagePointLog
@@ -41,21 +40,19 @@ class PagePointLog extends \XframeCMS\Model\AbstractModel
     protected $created = CURRENT_TIMESTAMP;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="pagePointLog")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="pagePointLogs")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
-    protected $users;
+    protected $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="Page", mappedBy="pagePointLog")
+     * @ORM\ManyToOne(targetEntity="Page", inversedBy="pagePointLogs")
      * @ORM\JoinColumn(name="page_id", referencedColumnName="id", nullable=false)
      */
-    protected $pages;
+    protected $page;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
-        $this->pages = new ArrayCollection();
     }
 
     public function __sleep()

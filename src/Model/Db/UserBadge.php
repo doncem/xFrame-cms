@@ -3,7 +3,6 @@
 namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * XframeCMS\Model\Db\UserBadge
@@ -36,14 +35,13 @@ class UserBadge extends \XframeCMS\Model\AbstractModel
     protected $earned = CURRENT_TIMESTAMP;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="userBadge")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="userBadges")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
-    protected $users;
+    protected $user;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
     }
 
     public function __sleep()

@@ -3,7 +3,6 @@
 namespace XframeCMS\Model\Db;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * XframeCMS\Model\Db\UserPointLog
@@ -36,14 +35,13 @@ class UserPointLog extends \XframeCMS\Model\AbstractModel
     protected $created = CURRENT_TIMESTAMP;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="userPointLog")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="userPointLogs")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
-    protected $users;
+    protected $user;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
     }
 
     public function __sleep()
