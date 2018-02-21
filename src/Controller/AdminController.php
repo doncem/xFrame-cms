@@ -20,7 +20,8 @@ class AdminController extends AbstractController
         $helper = $this->getHelperClass();
         $this->runHelper($helper, $this->request->action);
 
-        $this->view->action = \strtolower($helper);
+        $this->view->menuItem = \strtolower($helper);
+        $this->view->action = $this->request->action;
     }
 
     /**
@@ -47,15 +48,15 @@ class AdminController extends AbstractController
                 $helper = "Auth";
 
                 break;
-            case "my-profile":
-                $helper = "Profile";
+            case "page":
+                $helper = "Page";
 
                 break;
             default:
                 break;
         }
 
-        return "XframeCMS\\Controller\\Helper\\{$helper}Helper";
+        return $helper;
     }
 
     /**
@@ -64,11 +65,12 @@ class AdminController extends AbstractController
      * @param string $helperClass
      * @param string $action
      */
-    private function runHelper(string $helperClass, string $action)
+    private function runHelper(string $helper, string $action)
     {
+        $helperClass = "XframeCMS\\Controller\\Helper\\{$helper}Helper";
         /* @var $helper AbstractHelper */
-        $helper = new $helperClass($this->dic, $this->request, $this->view, $action);
+        $abstractHelper = new $helperClass($this->dic, $this->request, $this->view, $action);
 
-        $helper->run();
+        $abstractHelper->run();
     }
 }
