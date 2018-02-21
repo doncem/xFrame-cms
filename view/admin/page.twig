@@ -1,0 +1,13 @@
+{% extends "_layout/admin.twig" %}
+
+{% block meta_description %}{% endblock %}
+
+{% block contents %}
+{% if pages %}
+    {% for page in pages %}
+        {{ page }}
+    {% endfor %}
+{% else %}
+There are no pages yet
+{% endif %}
+{% endblock %}

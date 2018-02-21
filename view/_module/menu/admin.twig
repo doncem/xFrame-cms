@@ -3,7 +3,7 @@
     <div class="{% if menuItem == "page" %}active {% endif %}item">Page
         <div class="menu">
             <a class="{% if action == "page" %}active {% endif %}item">List</a>
-            <a class="{% if action == "create-page" %}active {% endif %}item">Add</a>
+            <a class="{% if action == "create-page" or action == "edit-page" %}active {% endif %}item">Add/Edit</a>
         </div>
     </div>
     <a class="item">{{ resource ~ '/' ~ menuItem ~ '/' ~ action }}</a>
