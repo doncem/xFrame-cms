@@ -19,22 +19,22 @@ class UserProfile extends \XframeCMS\Model\AbstractModel
     protected $user_id;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true, options={"default":"NULL"})
+     * @ORM\Column(type="string", length=100, nullable=true, options={})
      */
     protected $nickname;
 
     /**
-     * @ORM\Column(type="text", nullable=true, options={"default":"NULL"})
+     * @ORM\Column(type="text", nullable=true, options={})
      */
     protected $about;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true, options={"default":"NULL"})
+     * @ORM\Column(type="string", length=255, nullable=true, options={})
      */
     protected $profile_pic;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true, options={"default":"NULL"})
+     * @ORM\Column(type="string", length=255, nullable=true, options={})
      */
     protected $signature;
 

@@ -32,7 +32,7 @@ class PageUpdateLog extends \XframeCMS\Model\AbstractModel
     /**
      * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $updated = CURRENT_TIMESTAMP;
+    protected $updated;
 
     /**
      * @ORM\Column(type="object")
@@ -53,6 +53,7 @@ class PageUpdateLog extends \XframeCMS\Model\AbstractModel
 
     public function __construct()
     {
+        $this->updated = new \DateTime('now');
     }
 
     public function __sleep()

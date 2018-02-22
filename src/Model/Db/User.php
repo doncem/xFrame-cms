@@ -26,14 +26,14 @@ class User extends \XframeCMS\Model\AbstractModel
     protected $email;
 
     /**
-     * @ORM\Column(name="`password`", type="string", length=72, nullable=true, options={"default":"NULL"})
+     * @ORM\Column(name="`password`", type="string", length=72, nullable=true, options={})
      */
     protected $password;
 
     /**
      * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $registered = CURRENT_TIMESTAMP;
+    protected $registered;
 
     /**
      * @ORM\Column(type="string", length=44)
@@ -115,6 +115,7 @@ class User extends \XframeCMS\Model\AbstractModel
 
     public function __construct()
     {
+        $this->registered = new \DateTime('now');
         $this->pages = new ArrayCollection();
         $this->pagePointLogs = new ArrayCollection();
         $this->pageUpdateLogs = new ArrayCollection();

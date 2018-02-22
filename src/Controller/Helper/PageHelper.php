@@ -3,6 +3,7 @@
 namespace XframeCMS\Controller\Helper;
 
 use XframeCMS\Model\Db\Page;
+use XframeCMS\Model\DB\PageUpdateLog;
 
 /**
  * Admin page helper to manage pages on the site.
@@ -38,6 +39,7 @@ class PageHelper extends AbstractHelper
                 $this->view->pages = $this->dic->em->getRepository(Page::class)->getAll();
             } else {
                 $this->view->page = $this->dic->em->getRepository(Page::class)->getPageById($this->request->identifier);
+                $this->view->pageUpdateLog = $this->dic->em->getRepository(PageUpdateLog::class)->getAllByPageId($this->request->identifier);
             }
         }
     }

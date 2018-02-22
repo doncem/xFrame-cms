@@ -37,7 +37,7 @@ class UserAudit extends \XframeCMS\Model\AbstractModel
     /**
      * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $created = CURRENT_TIMESTAMP;
+    protected $created;
 
     /**
      * @ORM\Column(type="integer", options={"unsigned":true})
@@ -52,6 +52,7 @@ class UserAudit extends \XframeCMS\Model\AbstractModel
 
     public function __construct()
     {
+        $this->created = new \DateTime('now');
     }
 
     public function __sleep()

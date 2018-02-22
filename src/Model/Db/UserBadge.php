@@ -32,7 +32,7 @@ class UserBadge extends \XframeCMS\Model\AbstractModel
     /**
      * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $earned = CURRENT_TIMESTAMP;
+    protected $earned;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="userBadges")
@@ -42,6 +42,7 @@ class UserBadge extends \XframeCMS\Model\AbstractModel
 
     public function __construct()
     {
+        $this->earned = new \DateTime('now');
     }
 
     public function __sleep()

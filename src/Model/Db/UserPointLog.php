@@ -32,7 +32,7 @@ class UserPointLog extends \XframeCMS\Model\AbstractModel
     /**
      * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $created = CURRENT_TIMESTAMP;
+    protected $created;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="userPointLogs")
@@ -42,6 +42,7 @@ class UserPointLog extends \XframeCMS\Model\AbstractModel
 
     public function __construct()
     {
+        $this->created = new \DateTime('now');
     }
 
     public function __sleep()

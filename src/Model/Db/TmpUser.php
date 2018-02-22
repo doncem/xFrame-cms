@@ -26,10 +26,11 @@ class TmpUser extends \XframeCMS\Model\AbstractModel
     /**
      * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $created = CURRENT_TIMESTAMP;
+    protected $created;
 
     public function __construct()
     {
+        $this->created = new \DateTime('now');
     }
 
     public function __sleep()

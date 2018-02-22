@@ -33,7 +33,7 @@ class Page extends \XframeCMS\Model\AbstractModel
     /**
      * @ORM\Column(type="datetime", options={"default":"CURRENT_TIMESTAMP"})
      */
-    protected $created = CURRENT_TIMESTAMP;
+    protected $created;
 
     /**
      * @ORM\Column(type="boolean", options={"unsigned":true, "default":"0"})
@@ -75,6 +75,7 @@ class Page extends \XframeCMS\Model\AbstractModel
 
     public function __construct()
     {
+        $this->created = new \DateTime('now');
         $this->menus = new ArrayCollection();
         $this->pagePointLogs = new ArrayCollection();
         $this->pageUpdateLogs = new ArrayCollection();
