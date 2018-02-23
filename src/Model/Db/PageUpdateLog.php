@@ -35,7 +35,7 @@ class PageUpdateLog extends \XframeCMS\Model\AbstractModel
     protected $updated;
 
     /**
-     * @ORM\Column(type="object")
+     * @ORM\Column(type="json", options={"jsonb":true})
      */
     protected $diff;
 
