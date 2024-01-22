@@ -8,10 +8,9 @@ $loader = require $root . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 use Dotenv\Dotenv;
 
-$env = new Dotenv($root);
-$env->load();
+$env = Dotenv::createImmutable($root)->load();
 
-$config = \getenv('CONFIG') ?: 'live';
+$config = $env['CONFIG'] ?: 'live';
 
 // init app
 
@@ -31,11 +30,23 @@ function findSetupStatus(Registry $registry)
     }
 }
 
+function registerAuth0Vars(array $envVars, Registry $registry)
+{
+    $registry->auth0 = new Container();
+
+    \array_walk($envVars, function ($value, $key) use ($registry) {
+        if ('AUTH0' === \mb_substr($key, 0, 5)) {
+            $registry->auth0->$key = $value;
+        }
+    });
+}
+
 $system = new System($root, $config);
 
 $system->boot();
 
 findSetupStatus($system->registry);
+registerAuth0Vars($env, $system->registry);
 
 // set namespace prefix
 
@@ -60,5 +71,6 @@ $system->exceptionHandler->attach(new ExceptionWebView($system));
 
 // exec the request
 
-$request = new Request(\filter_input(INPUT_SERVER, 'REQUEST_URI'), $_REQUEST);
+
+$request = new Request(\filter_var($_SERVER['REQUEST_URI']), $_REQUEST);
 $system->getFrontController()->dispatch($request);

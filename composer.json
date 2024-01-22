@@ -13,7 +13,11 @@
     ],
     "minimum-stability": "stable",
     "config": {
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "repositories": [
         {
@@ -26,23 +30,32 @@
         }
     ],
     "require": {
-        "php": "^7",
+        "php": "^8",
+        "auth0/auth0-php": "^8.11",
+        "doctrine/migrations": "~3.7",
+        "doctrine/orm": "~2.17",
+        "guzzlehttp/guzzle": "^7.8",
+        "guzzlehttp/psr7": "^2.6",
+        "http-interop/http-factory-guzzle": "^1.2",
+        "linusnorton/xframe": "~2.0",
         "minime/annotations": "dev-type-upgrade as 3.0.x-dev",
-        "linusnorton/xframe": "~1.2",
-        "mobiledetect/mobiledetectlib": "~2.8",
-        "doctrine/migrations": "~v1.5",
-        "doctrine/orm": "~v2.6",
-        "auth0/auth0-php": "^5.0",
-        "vlucas/phpdotenv": "^2.4"
+        "nyholm/psr7": "^1.8",
+        "vlucas/phpdotenv": "^5.6"
     },
     "require-dev": {
         "mysql-workbench-schema-exporter/doctrine2-exporter": "dev-master",
         "mysql-workbench-schema-exporter/mysql-workbench-schema-exporter": "dev-master",
-        "phpunit/phpunit": "^6 || dev-master"
+        "phpunit/php-code-coverage": "^10.1",
+        "phpunit/phpunit": "^10.5 || dev-master"
     },
     "autoload": {
         "psr-4": {
             "XframeCMS\\": "src/"
         }
+    },
+    "scripts": {
+        "cs-check": "phpcs",
+        "serve": "php -S 0.0.0.0:8080 -t www/ www/index.php",
+        "test": "phpunit"
     }
 }

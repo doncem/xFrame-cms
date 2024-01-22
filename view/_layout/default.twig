@@ -13,31 +13,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="description" content="{% block meta_description %}{% endblock %}"/>
         <title>{% block title %}{% endblock %} - {{ web.title ?? "xFrame CMS" }}</title>
-        <link rel="stylesheet" href="/css/default.min.css?v={{ asset_version }}" />
-        {% if isMobile %}
-        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
-        {% endif %}
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <link rel="stylesheet" href="/css/default.css?v={{ asset_version }}" />
     </head>
-    <body>
+    <body class="is-fullwidth">
         {% include '_module/menu/user.twig' with { 'user': user, 'resource': resource } only %}
-
-        <div class="pusher">
-            {% if resource == 'admin' %}
-            <div class="ui stackable two column grid">
-                <div class="four wide column">{% include '_module/menu/admin.twig' %}</div>
-                <div class="twelve wide column">{% endif %}{% block contents %}{% endblock %}{% if resource == 'admin' %}</div>
+        <section class="container">
+            <div class="box">
+                {% if resource == 'admin' %}
+                <div class="columns">
+                    <div class="column is-one-quarter">{% include '_module/menu/admin.twig' %}</div>
+                    <div class="column">{% endif %}{% block contents %}{% endblock %}{% if resource == 'admin' %}</div>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
-        </div>
+        </section>
 
-        {% if isMobile %}
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-        {% else %}
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        {% endif %}
         {# <script type="text/javascript" src="/js/jquery.serialize-object.min.js?v={{ asset_version }}"></script> #}
-        <script type="text/javascript" src="/js/semantic.min.js?v={{ asset_version }}"></script>
         <script type="text/javascript" src="/js/main.js?v={{ asset_version }}"></script>
 
         {% block footer %}{% endblock %}

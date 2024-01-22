@@ -1,35 +1,63 @@
-<p id="setup-request-check">
-    <button class="ui {% if section.IS_SET_REQUEST %}green{% else %}red{% endif %} large button">
-        <i class="{% if section.IS_SET_REQUEST %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Request
+<div class="block" id="setup-request-check">
+    <button class="button {% if section.IS_SET_REQUEST %}is-success{% else %}is-danger{% endif %}">
+        <span>Request</span>
+        <span class="icon">
+            <i class="fas fa-{% if section.IS_SET_REQUEST %}check{% else %}minus{% endif %}"></i>
+        </span>
     </button>
-</p>
-<p id="setup-database-check">
-    <button class="ui {% if section.IS_SET_DATABASE %}green{% else %}red{% endif %} large button">
-        <i class="{% if section.IS_SET_DATABASE %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Database
+</div>
+<div class="block" id="setup-database-check">
+    <button class="button {% if section.IS_SET_DATABASE %}is-success{% else %}is-danger{% endif %}">
+        <span>Database</span>
+        <span class="icon">
+            <i class="fas fa-{% if section.IS_SET_DATABASE %}check{% else %}minus{% endif %}"></i>
+        </span>
     </button>
-</P>
-<p id="setup-doctrine2-check">
-    <button class="ui {% if section.IS_SET_DOCTRINE2 %}green{% else %}red{% endif %} large button">
-        <i class="{% if section.IS_SET_DOCTRINE2 %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Doctrine2
+</div>
+<div class="block" id="setup-doctrine2-check">
+    <button class="button {% if section.IS_SET_DOCTRINE2 %}is-success{% else %}is-danger{% endif %}">
+        <span>Doctrine2</span>
+        <span class="icon">
+            <i class="fas fa-{% if section.IS_SET_DOCTRINE2 %}check{% else %}minus{% endif %}"></i>
+        </span>
     </button>
-</p>
-<p id="setup-twig-check">
-    <button class="ui {% if section.IS_SET_TWIG %}green{% else %}red{% endif %} large button">
-        <i class="{% if section.IS_SET_TWIG %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Twig
+</div>
+<div class="block" id="setup-twig-check">
+    <button class="button {% if section.IS_SET_TWIG %}is-success{% else %}is-danger{% endif %}">
+        <span>Twig</span>
+        <span class="icon">
+            <i class="fas fa-{% if section.IS_SET_TWIG %}check{% else %}minus{% endif %}"></i>
+        </span>
     </button>
-</p>
-<p id="setup-cache-check">
-    <button class="ui {% if section.IS_SET_CACHE %}green{% else %}red{% endif %} large button">
-        <i class="{% if section.IS_SET_CACHE %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Cache
+</div>
+<div class="block" id="setup-cache-check">
+    <button class="button {% if section.IS_SET_CACHE %}is-success{% else %}is-danger{% endif %}">
+        <span>Cache</span>
+        <span class="icon">
+            <i class="fas fa-{% if section.IS_SET_CACHE %}check{% else %}minus{% endif %}"></i>
+        </span>
     </button>
-</p>
-<p id="setup-plugin-check">
-    <button class="ui {% if section.IS_SET_PLUGIN %}green{% else %}red{% endif %} large button">
-        <i class="{% if section.IS_SET_PLUGIN %}checkmark box{% else %}minus square outline{% endif %} icon"></i>Plugin
+</div>
+<div class="block" id="setup-plugin-check">
+    <button class="button {% if section.IS_SET_PLUGIN %}is-success{% else %}is-danger{% endif %}">
+        <span>Plugin</span>
+        <span class="icon">
+            <i class="fas fa-{% if section.IS_SET_PLUGIN %}check{% else %}minus{% endif %}"></i>
+        </span>
     </button>
-</p>
-<form class="ui fluid form" name="setup-setup" method="POST" action="#save/setup">
-    <div class="ui green button verify" data-action="verify setup" data-step="setup">Verify</div>
-    <div class="ui primary button save" data-action="save setup" data-step="setup">Save</div>
-    <div class="ui error message"></div>
+</div>
+<form name="setup-setup" method="POST" action="#save/setup">
+    <div class="field is-horizontal">
+        <div class="field-label">
+            <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary">Verify</button>
+                    <button class="button is-secondary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>

@@ -17,7 +17,7 @@ abstract class AbstractModel implements JsonSerializable
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         $vars = \array_keys(\get_object_vars($this));
         $array = [];

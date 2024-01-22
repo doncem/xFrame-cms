@@ -18,12 +18,12 @@ final class Setup
     ];
 
     const ICONS = [
-        'request' => 'disk outline',
+        'request' => 'network-wired',
         'database' => 'database',
         'doctrine2' => 'database',
         'twig' => 'html5',
         'cache' => 'server',
         'plugin' => 'plug',
-        'setup' => 'options'
+        'setup' => 'gears'
     ];
 }

@@ -7,11 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "less": "for filename in $(basename `find src/_npm/less/ -name \"*.less\"` .less); do lessc --no-ie-compat --clean-css='--s1' src/_npm/less/$filename.less www/css/$filename.min.css; done",
-    "less:lint": "for filename in $(find src/_npm/less/ -name \"*.less\"); do lessc -l $filename; done",
-    "pretest": "npm run less:lint",
+    "build-sass": "node-sass --output-style compact src/_npm/sass/default.sass www/css/default.css",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "snyk-protect": "snyk protect",
+    "watch-sass": "npm run build-sass -- --watch",
+    "snyk-protect": "snyk-protect",
     "prepublish": "npm run snyk-protect"
   },
   "repository": {
@@ -30,10 +29,11 @@
   "homepage": "https://github.com/doncem/xFrame-cms#readme",
   "dependencies": {
     "form-serializer": "^2.5.0",
-    "less": "^2.7.3",
-    "less-plugin-clean-css": "^1.5.1",
-    "semantic-ui": "^2.3.0",
-    "snyk": "^1.69.7"
+    "@snyk/protect": "^1.1267.0"
+  },
+  "devDependencies": {
+    "bulma": "^0.9.4",
+    "node-sass": "^9.0.0"
   },
   "snyk": true
 }
