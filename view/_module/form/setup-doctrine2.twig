@@ -1,11 +1,35 @@
-<form class="ui fluid form disabled" name="setup-doctrine2" method="POST" action="#save/doctrine2">
-    <div class="inline field disabled">
-        <div class="ui toggle checkbox">
-            <input type="checkbox" class="hidden" name="doctrine-proxies"{% if section.AUTO_REBUILD_PROXIES %} checked{% endif %} />
-            <label>Auto Rebuild Proxies</label>
+<form name="setup-doctrine2" method="POST" action="#save/doctrine2">
+    <div class="field is-horizontal">
+        <div class="field-label">
+            <label class="label">Auto Rebuild Proxies?</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" name="doctrine-proxies"{% if section.AUTO_REBUILD_PROXIES %} checked{% endif %}>
+                        Yes
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="doctrine-proxies"{% if not section.AUTO_REBUILD_PROXIES %} checked{% endif %}>
+                        No
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="ui green button verify disabled" data-action="verify setup" data-step="doctrine2">Verify</div>
-    <div class="ui primary button save disabled" data-action="save setup" data-step="doctrine2">Save</div>
-    <div class="ui error message"></div>
+
+    <div class="field is-horizontal">
+        <div class="field-label">
+            <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary">Verify</button>
+                    <button class="button is-secondary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>

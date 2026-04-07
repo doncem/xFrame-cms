@@ -5,18 +5,17 @@
 {% block title %}Error{% endblock %}
 
 {% block contents %}
-    <h1 class="ui center aligned icon header">
-        <i class="warning icon"></i>
-        <div class="content">Error</div>
-    </h1>
-    <div class="ui centered grid">
-        <div class="{% if errorStack %}ten{% else %}six{% endif %} wide column">
-            <div class="ui negative message transition auto-overflow-x">
-                <div class="header">{{ errorMessage }}</div>
-                <pre>{{ errorStack }}</pre>
-            </div>
+    <h1 class="title">Error</h1>
+    <article class="message is-danger">
+        <div class="message-header">
+            <p>{{ errorMessage }}</p>
         </div>
-    </div>
+        {% if errorStack %}
+        <div class="message-body">
+            <pre>{{ errorStack }}</pre>
+        </div>
+        {% endif %}
+    </article>
 {% endblock %}
 
 {% block footer %}{% endblock %}

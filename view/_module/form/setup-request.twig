@@ -1,23 +1,53 @@
-<form class="ui fluid form" name="setup-request" method="POST" action="#save/request">
-    <div class="required inline field">
-        <div class="ui corner labeled input">
-            <div class="ui label">Default View Template</div>
-            <select class="ui fluid dropdown" name="request-view">
-                <option value="\Xframe\View\TwigView"{% if section.DEFAULT_VIEW == "\Xframe\View\TwigView" %} selected{% endif %}>TwigView</option>
-                <option value="\Xframe\View\JsonView"{% if section.DEFAULT_VIEW == "\Xframe\View\JsonView" %} selected{% endif %}>JsonView</option>
-            </select>
-            <div class="ui corner label">
-                <i class="asterisk icon"></i>
+<form name="setup-request" method="POST" action="#save/request">
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">Default View Template *</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <div class="select is-fullwidth">
+                        <select name="request-view">
+                            <option value="\Xframe\View\TwigView"{% if section.DEFAULT_VIEW == "\Xframe\View\TwigView" %} selected{% endif %}>TwigView</option>
+                            <option value="\Xframe\View\JsonView"{% if section.DEFAULT_VIEW == "\Xframe\View\JsonView" %} selected{% endif %}>JsonView</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="inline field">
-        <div class="ui toggle checkbox">
-            <input type="checkbox" class="hidden" name="request-rebuild"{% if section.AUTO_REBUILD %} checked{% endif %} />
-            <label>Auto Rebuild Request Map</label>
+
+    <div class="field is-horizontal">
+        <div class="field-label">
+            <label class="label">Auto Rebuild Request Map?</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" name="request-rebuild" value="yes"{% if section.AUTO_REBUILD %} checked{% endif %}>
+                        Yes
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="request-rebuild" value="no"{% if not section.AUTO_REBUILD %} checked{% endif %}>
+                        No
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="ui green button verify" data-action="verify setup" data-step="request">Verify</div>
-    <div class="ui primary button save" data-action="save setup" data-step="request">Save</div>
-    <div class="ui error message"></div>
+
+    <div class="field is-horizontal">
+        <div class="field-label">
+            <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary">Verify</button>
+                    <button class="button is-secondary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>

@@ -44,6 +44,10 @@ final class SetupController extends AbstractController
         $registry = [];
 
         foreach ($this->dic->registry as $section => $sectionConfig) {
+            if ('auth0' === $section) {
+                continue;
+            }
+
             $registry[$section] = [];
             $reflecton = new ReflectionClass($sectionConfig);
             $constants = $reflecton->getConstants();

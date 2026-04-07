@@ -2,8 +2,8 @@
 
 namespace XframeCMS\Controller;
 
-use Auth0\SDK\Exception\ApiException;
 use XframeCMS\AbstractController;
+use XframeCMS\Exception\Auth0Exception;
 
 /**
  * Controller for logging in and out actions.
@@ -50,7 +50,7 @@ final class LoginController extends AbstractController
 
             $this->redirect('/');
         } else {
-            throw new ApiException('Auth0 API error');
+            throw new Auth0Exception('Auth0 API error');
         }
     }
 }

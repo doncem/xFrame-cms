@@ -36,7 +36,7 @@ class ExceptionWebView implements SplObserver
      *
      * @param SplSubject $subject
      */
-    public function update(SplSubject $subject)
+    public function update(SplSubject $subject): void
     {
         $view = new TwigView(
             $this->dic->registry,

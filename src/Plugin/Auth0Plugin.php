@@ -2,8 +2,8 @@
 
 namespace XframeCMS\Plugin;
 
+use Auth0\SDK\Auth0;
 use Xframe\Plugin\AbstractPlugin;
-use XframeCMS\Plugin\Helper\Auth0PluginHelper;
 
 /**
  * Auth0 plugin.
@@ -13,26 +13,16 @@ class Auth0Plugin extends AbstractPlugin
     /**
      * Construct Auth0 client.
      *
-     * @return Auth0PluginHelper
+     * @return Auth0
      */
     public function init()
     {
-        $auth0Audience = \getenv('AUTH0_AUDIENCE');
-        $auth0Callback = \getenv('AUTH0_CALLBACK_URL');
-        $auth0ClientId = \getenv('AUTH0_CLIENT_ID');
-        $auth0ClientSecret = \getenv('AUTH0_CLIENT_SECRET');
-        $auth0Domain = \getenv('AUTH0_DOMAIN');
-
-        return new Auth0PluginHelper([
-            'domain' => $auth0Domain,
-            'client_id' => $auth0ClientId,
-            'client_secret' => $auth0ClientSecret,
-            'redirect_uri' => $auth0Callback,
-            'audience' => $auth0Audience,
-            'scope' => 'openid profile',
-            'persist_id_token' => true,
-            'persist_access_token' => true,
-            'persist_refresh_token' => true,
+        return new Auth0([
+            'domain'        => $this->dic->registry->auth0->AUTH0_DOMAIN,
+            'redirectUri'   => $this->dic->registry->auth0->AUTH0_CALLBACK_URL,
+            'clientId'      => $this->dic->registry->auth0->AUTH0_CLIENT_ID,
+            'clientSecret'  => $this->dic->registry->auth0->AUTH0_CLIENT_SECRET,
+            'cookieSecret'  => $this->dic->registry->auth0->AUTH0_COOKIE_SECRET
         ]);
     }
 }

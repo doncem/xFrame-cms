@@ -1,0 +1,27 @@
+@import "../../../node_modules/bulma/bulma.sass"
+/* extensions */
+/* NA */
+/* customize */
+.content figure.highlight
+  text-align: left
+
+// tpdp fix variables
+.tabs.is-vertical { display: flex; }
+.tabs.is-vertical ul { display: block; }
+.tabs.is-vertical ul .button { display: block; border-bottom-color: transparent; border-left-color: transparent; border-right: 2px solid #dbdbdb; border-top-color: transparent; text-align: left; }
+.tabs.is-vertical ul .button:hover:not(.is-success) { border-right-color: #3273dc; }
+.tabs.is-vertical ul li.is-active .button { border-right-color: #3273dc; }
+.tabs.is-vertical ul li.is-active .button.is-success { border-right-color: #48c78e; }
+.tab-content { animation: fadeInLeft .5s; }
+
+/* printable tab */
+@media print
+  body *
+    visibility: hidden
+  .printable:not(.is-hidden), .printable:not(.is-hidden) *
+    visibility: visible
+    border: none
+  .printable:not(.is-hidden)
+    position: absolute
+    left: 0
+    top: 0

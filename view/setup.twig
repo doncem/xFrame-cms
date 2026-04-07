@@ -5,33 +5,29 @@
 {% block title %}Setup{% endblock %}
 
 {% block contents %}
-    <h1 class="ui center aligned icon header">
-        <i class="settings icon"></i>
-        <div class="content">SETUP</div>
-    </h1>
-    <div class="ui grid container">
-        <div class="five wide column">
-            <div class="ui fluid vertical steps" id="setup-container">
-                {% for section in registry|keys %}
-                <div class="{% if registry.setup['IS_SET_' ~ section|upper] %}completed {% endif %}link step" id="setup-{{ section }}">
-                    <i class="{{ icons[section] }} icon"></i>
-                    <div class="content">
-                        <div class="title">{{ section | capitalize }}</div>
-                        <div class="description">{{ descriptions[section] }}</div>
-                    </div>
-                </div>
-                {% endfor %}
+    <h1 class="title"><span class="icon"><i class="fas fa-gear" aria-hidden="true"></i></span>&nbsp;Setup</h1>
+    <div class="columns">
+        <div class="column is-one-third">
+            <div class="tabs is-fullwidth is-medium is-vertical">
+                <ul>
+                    {% for section in registry|keys %}
+                    <li class="" id="setup-{{ section }}" data-target="setup-{{ section }}-target">
+                        <a class="button is-inverted is-radiusless{% if registry.setup['IS_SET_' ~ section|upper] %} is-success{% endif %}">
+                            <span class="icon"><i class="fas fa-{{ icons[section] }}" aria-hidden="true"></i></span>
+                            <span>{{ descriptions[section] }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
-        <div class="eleven wide column">
-            <div class="ui raised very padded loading segment">
-                {% for key, section in registry %}
-                <div class="hidden" id="setup-{{key}}-container">
-                    <h2 class="ui header">{{ key | capitalize }}</h2>
-                    {% include '_module/form/setup-' ~ key ~ '.twig' with { 'section': section } only %}
-                </div>
-                {% endfor %}
+        <div class="column">
+            {% for key, section in registry %}
+            <div id="setup-{{ key }}-target" class="is-hidden tab-content">
+                <h2 class="title">{{ key | capitalize }}</h2>
+                {% include '_module/form/setup-' ~ key ~ '.twig' with { 'section': section } only %}
             </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
